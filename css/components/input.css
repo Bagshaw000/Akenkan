@@ -1,0 +1,12 @@
+
+input{
+	width: 100%;
+	margin: 1em;
+	padding: 1em;
+	border-radius: 8px;
+	z-index: 0;
+	outline: none;
+	text-decoration: none;
+	display: flex;
+	border: 2px solid #efefef;
+}

@@ -10,28 +10,35 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <!-- easyGo CSS -->
-  <link rel="stylesheet" href="css/general.css" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/login.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/general.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/auth.css" crossorigin="anonymous">
 
 
-  <title>Akenkan - Create an account</title>
+  <title>Akenkan - Login</title>
 </head>
 
 <body>
 
+<section class="center" id="login-section">
+
+<div id="page-label" class="col">
+
+	<h1>Login</h1>
+		<h6>Fill up your details to continue</h6>
+</div>
+
+<form action="" method="post"> <!-- Start of login form -->
+	<input type="text" name="email" id="email" class="email" placeholder="Email">
+	<input type="text" name="password" id="password" class="password" placeholder="Password">
+
+	<button type="submit" class="btn btn-filled">Login</button>
+</form> <!-- End of login form -->
+
+<p>Don't have an account ? <a href="create_account.php">Sign Up</a></p>
 
 
-<div class="row">
+</section>
 
-<!-- Start of left column -->
-  <section class="col col-6" id="left-column">
-
-</section> <!-- End of left column -->
-
-  <!-- Start of right column -->
-  <section class="col col-6" id="right-column">
-    <h2>Create an account</h2>
-  </section><!-- End of right column -->
 </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
