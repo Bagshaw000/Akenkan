@@ -32,7 +32,7 @@ class book_class extends db_connection
      * This function selects all the books that have not been deleted in the database
      * @return array
      */
-    function select_all_book_cls($b_perm){
+    function select_all_book_cls(){
         $sql = "SELECT * FROM `books` WHERE `b_perm`=1";
 
         return $this->db_fetch_all($sql);
