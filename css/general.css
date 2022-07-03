@@ -1,0 +1,8 @@
+@import url("components/button.css");
+@import url("components/input.css");
+
+
+a{
+	text-decoration: solid;
+	color: var(--blue);
+}
