@@ -3,7 +3,7 @@
 require("../settings/db_class.php");
 
 /**
-*General class to handle all functions 
+*General class to handle all functions
 */
 /**
  *@author David Sampah
@@ -15,10 +15,10 @@ class user_class extends db_connection
 
 	//--INSERT--//
 	function insert_user_cls($email, $password, $name,$role){
-        $sql = "INSERT INTO users (`email`, `password`, `display_name`,`role`) 
+        $sql = "INSERT INTO users (`email`, `password`, `display_name`,`role`)
         VALUES ('$email','$password','$name','$role')";
 
-        return $this->db_query_escape_string($sql);
+        return $this->db_query($sql);
     }
 
 	//--SELECT--//
@@ -30,12 +30,13 @@ class user_class extends db_connection
     }
 
 
+
 	//--UPDATE--//
 
 
 
 	//--DELETE--//
-	
+
 
 }
 

@@ -4,7 +4,7 @@ include("../classes/users_class.php");
 include("../functions/function_store.php");
 
 //sanitize data
-function cleanText($data) 
+function cleanText($data)
 {
   $data = trim($data);
   //$data = stripslashes($data);
@@ -24,7 +24,7 @@ function insert_user_ctr($email, $password, $name,$role){
     $data = new user_class();
     $hashed_pas= hash_pass($password);
 
-    return $data->insert_user_cls(cleanText($email), cleanText($hashed_pas), cleanText($name,$role));
+    return $data->insert_user_cls(cleanText($email), cleanText($hashed_pas), cleanText($name),cleanText($role));
 }
 
 //--SELECT--//
@@ -42,6 +42,22 @@ function select_user_ctr($email){
     }else{
         return $user_data;
     };
+}
+
+
+//Authenticates a user's email and password, returning
+//information if successful and false otherwise
+function sign_in_user_ctrl($email, $password) {
+    $user = new user_class();
+    $hash_pass =  $user->select_user_cls($email); // get user's hashed password
+    // header("Location: ../");
+    // return $hash_pass;
+    return false;
+    if (verify_pass($hash_pass["password"], $password)){// if password matches, return user info
+        return $user->select_user_cls($email);
+    } else { // if passwords don't matc return false
+        return false;
+    }
 }
 
 //--UPDATE--//
