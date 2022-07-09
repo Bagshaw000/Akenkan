@@ -12,7 +12,7 @@
   <!-- easyGo CSS -->
   <link rel="stylesheet" href="../css/general.css" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/auth.css" crossorigin="anonymous">
-
+  <script src="../js/auth.js"></script>
 
   <title>Akenkan - Create Account</title>
 </head>
@@ -40,17 +40,25 @@
 
 
   <!-- Start of form  -->
-  <form action="" method="post">
+  <form action="" onsubmit="onsignupsubmit()" method="post">
 
   <input type="text" name="username" id="username" placeholder="Username">
+  <small id="name_error_empty">This field cannot be empty</small>
+
   <input type="email" name="email" id="email" placeholder="Email">
+  <small  id="email_error">Enter a valid email</small>
 
   <div class="row" id="password-row"><!-- Start of password row -->
     <input type="password" name="password" id="password" placeholder="Password" class="half-input">
-    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" class="half-input">
-  </div> <!-- End of password row -->
 
-  <button class="btn btn-filled">Create Account</button>
+    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" class="half-input">
+
+  </div> <!-- End of password row -->
+  <small id="pass_error_len">Password should be longer than 5 characters</small>
+    <small id="pass_error_num">Password should contain a number</small>
+    <small id="pass_error_confirm">Passwords do not match</small>
+
+  <button class="btn btn-filled" name="create_account">Create Account</button>
 
   </form>
   <!-- End of form -->

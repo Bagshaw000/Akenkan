@@ -12,7 +12,7 @@
   <!-- easyGo CSS -->
   <link rel="stylesheet" href="../css/general.css" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/auth.css" crossorigin="anonymous">
-
+  <script src="../js/auth.js"></script>
 
   <title>Akenkan - Login</title>
 </head>
@@ -27,11 +27,14 @@
 		<h6>Fill up your details to continue</h6>
 </div>
 
-<form action="" method="post"> <!-- Start of login form -->
+<form action="" method="post" onsubmit="return onloginsubmit()"> <!-- Start of login form -->
 	<input type="text" name="email" id="email" class="email" placeholder="Email">
-	<input type="text" name="password" id="password" class="password" placeholder="Password">
+  <small  id="email_error">Enter a valid email</small>
+	<input type="password" name="password" id="password" class="password" placeholder="Password">
+  <small id="pass_error_len">Password should be longer than 5 characters</small>
+  <small id="pass_error_num">Password should contain a number</small>
 
-	<button type="submit" class="btn btn-filled">Login</button>
+	<button type="submit" id="login-btn" class="btn btn-filled">Login</button>
 </form> <!-- End of login form -->
 
 <p>Don't have an account ? <a href="create_account.php">Sign Up</a></p>
