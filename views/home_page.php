@@ -13,14 +13,42 @@
     <link rel="stylesheet" href="../css/homepage.css">
 </head>
 <body>
-    <!-- Navebar -->
-    <ul>
-  <li>
-   
-  </li>
-  <li><a href="#news">News</a></li>
-  <li><a href="#contact">Contact</a></li>
- 
-</ul>
+    <!-- Navbar -->
+    <nav class="nav-div">
+      <ul class="nav">
+        <li class= "nav-name" >Akenkan</li>
+        <li class="nav-form">
+          <form  method="get">
+            <input type="text" name="" id="nav-search">
+            <button id="nav-search-btn"><img
+    src="../images/Vector.svg"
+    alt="triangle with all three sides equal"
+   id="search"/></button>
+          </form>
+        </li>
+        <li class="nav-person"><img src="../images/person.svg" alt="" srcset=""></li>
+        <li>
+         <div class="nav-dropdown">
+            <a class="" href="#" id="dropdownMenuLink" 
+            style='color:black; text-decoration: none;'
+            data-bs-toggle="dropdown" aria-expanded="false">
+              Account
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+         </div>
+        </li>
+
+        <li class="nav-cart">
+          <img src="../images/cartlogo.svg" alt="">
+          <a href="" id="cart">Cart</a>
+
+        </li>
+      </ul>
+    </nav>
 </body>
 </html>
