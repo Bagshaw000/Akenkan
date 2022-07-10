@@ -183,6 +183,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 		<!-- header-starts -->
 		<div class="sticky-header header-section ">
 			<div class="header-left">
+
 				<!--toggle button start-->
 				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
 				<!--toggle button end-->
@@ -214,14 +215,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								</a></li>
 								<li><a href="#">
 								   <div class="user_img"><img src="images/3.jpg" alt=""></div>
-								   <div class="notification_desc">
-									<p>Lorem ipsum dolor amet </p>
-									<p><span>1 hour ago</span></p>
-									</div>
-								   <div class="clearfix"></div>
-								</a></li>
-								<li><a href="#">
-								   <div class="user_img"><img src="images/2.jpg" alt=""></div>
 								   <div class="notification_desc">
 									<p>Lorem ipsum dolor amet </p>
 									<p><span>1 hour ago</span></p>
@@ -265,11 +258,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<div class="profile_img">
 									<span class="prfil-img"><img src="images/2.jpg" alt=""> </span>
 									<div class="user-name">
+                                        <script src="../js/auth.js"></script>
                                         <?php
                                         $name = get_user_name_by_id_ctrl(get_session_user_id());
-                                            echo "<p>$name</p>";
+                                            echo "<p> $name</p>";
                                         ?>
-
 										<span>Administrator</span>
 									</div>
 									<i class="fa fa-angle-down lnr"></i>

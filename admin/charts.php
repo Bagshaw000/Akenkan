@@ -4,13 +4,23 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<?php
+//Getting neccessary files
+    require_once("../controllers/user_controller.php");
+    require_once("../settings/core.php");
+
+    //Enforcing admin only success
+    if (!(is_user_signed_in() && is_session_user_admin())){
+        header("Location: login.php");
+    }
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
 <title>Glance Design Dashboard an Admin Panel Category Flat Bootstrap Responsive Website Template | Charts :: w3layouts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
@@ -21,20 +31,20 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 
 <!-- font-awesome icons CSS -->
-<link href="css/font-awesome.css" rel="stylesheet"> 
+<link href="css/font-awesome.css" rel="stylesheet">
 <!-- //font-awesome icons CSS -->
 
  <!-- side nav css file -->
  <link href='css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
  <!-- side nav css file -->
- 
+
  <!-- js-->
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/modernizr.custom.js"></script>
 
 <!--webfonts-->
 <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
-<!--//webfonts--> 
+<!--//webfonts-->
 
 <!-- Metis Menu -->
 <script src="js/metisMenu.min.js"></script>
@@ -56,7 +66,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     height: 300px;
 }
 </style>
-</head> 
+</head>
 <body class="cbp-spmenu-push">
 	<div class="main-content">
 	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
@@ -169,11 +179,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </aside>
 	</div>
 		<!--left-fixed -navigation-->
-		
+
 		<!-- header-starts -->
 		<div class="sticky-header header-section ">
 			<div class="header-left">
-				
+
 				<!--toggle button start-->
 				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
 				<!--toggle button end-->
@@ -193,7 +203,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									<p>Lorem ipsum dolor amet</p>
 									<p><span>1 hour ago</span></p>
 									</div>
-								   <div class="clearfix"></div>	
+								   <div class="clearfix"></div>
 								</a></li>
 								<li class="odd"><a href="#">
 									<div class="user_img"><img src="images/4.jpg" alt=""></div>
@@ -201,7 +211,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									<p>Lorem ipsum dolor amet </p>
 									<p><span>1 hour ago</span></p>
 									</div>
-								  <div class="clearfix"></div>	
+								  <div class="clearfix"></div>
 								</a></li>
 								<li><a href="#">
 								   <div class="user_img"><img src="images/3.jpg" alt=""></div>
@@ -209,12 +219,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									<p>Lorem ipsum dolor amet </p>
 									<p><span>1 hour ago</span></p>
 									</div>
-								   <div class="clearfix"></div>	
+								   <div class="clearfix"></div>
 								</a></li>
 								<li>
 									<div class="notification_bottom">
 										<a href="#">See all messages</a>
-									</div> 
+									</div>
 								</li>
 							</ul>
 						</li>
@@ -232,7 +242,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									<p>Lorem ipsum dolor amet</p>
 									<p><span>1 hour ago</span></p>
 									</div>
-								  <div class="clearfix"></div>	
+								  <div class="clearfix"></div>
 								 </a></li>
 								 <li class="odd"><a href="#">
 									<div class="user_img"><img src="images/1.jpg" alt=""></div>
@@ -240,7 +250,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									<p>Lorem ipsum dolor amet </p>
 									<p><span>1 hour ago</span></p>
 									</div>
-								   <div class="clearfix"></div>	
+								   <div class="clearfix"></div>
 								 </a></li>
 								 <li><a href="#">
 									<div class="user_img"><img src="images/3.jpg" alt=""></div>
@@ -248,15 +258,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									<p>Lorem ipsum dolor amet </p>
 									<p><span>1 hour ago</span></p>
 									</div>
-								   <div class="clearfix"></div>	
+								   <div class="clearfix"></div>
 								 </a></li>
 								 <li>
 									<div class="notification_bottom">
 										<a href="#">See all notifications</a>
-									</div> 
+									</div>
 								</li>
 							</ul>
-						</li>	
+						</li>
 						<li class="dropdown head-dpdn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">8</span></a>
 							<ul class="dropdown-menu">
@@ -268,7 +278,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<li><a href="#">
 									<div class="task-info">
 										<span class="task-desc">Database update</span><span class="percentage">40%</span>
-										<div class="clearfix"></div>	
+										<div class="clearfix"></div>
 									</div>
 									<div class="progress progress-striped active">
 										<div class="bar yellow" style="width:40%;"></div>
@@ -277,7 +287,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<li><a href="#">
 									<div class="task-info">
 										<span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
-									   <div class="clearfix"></div>	
+									   <div class="clearfix"></div>
 									</div>
 									<div class="progress progress-striped active">
 										 <div class="bar green" style="width:90%;"></div>
@@ -286,7 +296,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<li><a href="#">
 									<div class="task-info">
 										<span class="task-desc">Mobile App</span><span class="percentage">33%</span>
-										<div class="clearfix"></div>	
+										<div class="clearfix"></div>
 									</div>
 								   <div class="progress progress-striped active">
 										 <div class="bar red" style="width: 33%;"></div>
@@ -295,7 +305,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<li><a href="#">
 									<div class="task-info">
 										<span class="task-desc">Issues fixed</span><span class="percentage">80%</span>
-									   <div class="clearfix"></div>	
+									   <div class="clearfix"></div>
 									</div>
 									<div class="progress progress-striped active">
 										 <div class="bar  blue" style="width: 80%;"></div>
@@ -304,10 +314,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<li>
 									<div class="notification_bottom">
 										<a href="#">See all pending tasks</a>
-									</div> 
+									</div>
 								</li>
 							</ul>
-						</li>	
+						</li>
 					</ul>
 					<div class="clearfix"> </div>
 				</div>
@@ -315,8 +325,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"> </div>
 			</div>
 			<div class="header-right">
-				
-				
+
+
 				<!--search-box-->
 				<div class="search-box">
 					<form class="input">
@@ -328,34 +338,37 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 						</label>
 					</form>
 				</div><!--//end-search-box-->
-				
-				<div class="profile_details">		
+
+				<div class="profile_details">
 					<ul>
 						<li class="dropdown profile_details_drop">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-								<div class="profile_img">	
-									<span class="prfil-img"><img src="images/2.jpg" alt=""> </span> 
+								<div class="profile_img">
+									<span class="prfil-img"><img src="images/2.jpg" alt=""> </span>
 									<div class="user-name">
-										<p>Admin Name</p>
+                                        <?php
+                                        $name = get_user_name_by_id_ctrl(get_session_user_id());
+                                            echo "<p> $name</p>";
+                                        ?>
 										<span>Administrator</span>
 									</div>
 									<i class="fa fa-angle-down lnr"></i>
 									<i class="fa fa-angle-up lnr"></i>
-									<div class="clearfix"></div>	
-								</div>	
+									<div class="clearfix"></div>
+								</div>
 							</a>
 							<ul class="dropdown-menu drp-mnu">
-								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
+								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
 								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
-								<li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
+								<li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
 								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
 							</ul>
 						</li>
 					</ul>
 				</div>
-				<div class="clearfix"> </div>				
+				<div class="clearfix"> </div>
 			</div>
-			<div class="clearfix"> </div>	
+			<div class="clearfix"> </div>
 		</div>
 		<!-- //header-ends -->
 		<!-- main content start-->
@@ -366,7 +379,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 						<div class="card-header">
 							<h3>Bar chart</h3>
 						</div>
-						
+
 						<div id="container" style="width: 100%; height:270px;">
 							<canvas id="canvas"></canvas>
 						</div>
@@ -375,19 +388,19 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 						<button id="removeDataset">Remove Dataset</button>
 						<button id="addData">Add Data</button>
 						<button id="removeData">Remove Data</button>
-						
+
 					</div>
-					
+
 					<div class="col-md-4 charts-grids widget states-mdl">
 						<div class="card-header">
 							<h3>Column & Line Graph</h3>
 						</div>
 						<div id="chartdiv1"></div>
 					</div>
-			
+
 					<div class="clearfix"> </div>
 				</div>
-				
+
 	<!-- for amcharts js -->
 			<script src="js/amcharts.js"></script>
 			<script src="js/serial.js"></script>
@@ -397,24 +410,24 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 	<!-- for amcharts js -->
 
     <script  src="js/index2.js"></script>
-		
+
 			<div class="hight-chat charts">
 					<div class="col-md-6 w3ls-high charts-grids">
 						<div class="hightchat-grid">
 							<script type="text/javascript">
 							  // Generate data
-							  
+
 							  var data = [];
-							  
+
 							  var time = new Date('Dec 1, 2013 12:00').valueOf();
-							  
+
 							  var h = Math.floor(Math.random() * 100);
 							  var l = h - Math.floor(Math.random() * 20);
 							  var o = h - Math.floor(Math.random() * (h - l));
 							  var c = h - Math.floor(Math.random() * (h - l));
 
 							  var v = Math.floor(Math.random() * 1000);
-							  
+
 							  for (var i = 0; i < 30; i++) {
 								data.push([time, o, h, l, c, v]);
 								h += Math.floor(Math.random() * 10 - 5);
@@ -452,8 +465,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							</script>
 						</div>
 					</div>
-					<div class="col-md-6 agileits-high charts-grids"> 
-						<div class="hightchat-grid1">  
+					<div class="col-md-6 agileits-high charts-grids">
+						<div class="hightchat-grid1">
 							<h4 class="title">Multiple y-axis</h4>
 							<div id="example-6"></div>
 							<script type="text/javascript">
@@ -472,7 +485,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="clearfix"></div>
 			</div>
-			
+
 			<!-- for amcharts js -->
 			<script src="js/amcharts.js"></script>
 			<script src="js/serial.js"></script>
@@ -480,7 +493,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 			<link rel="stylesheet" href="css/export.css" type="text/css" media="all" />
 			<script src="js/light.js"></script>
 			<!-- for amcharts js -->
-			
+
 			<div class="charts">
 				<div class="col-md-6 charts-grids w3ls-high">
 					<h4 class="title">Stacked Bar Chart</h4>
@@ -496,17 +509,17 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				<!--graph-->
 				<link rel="stylesheet" href="css/graph.css">
 				<!--//graph-->
-							
+
 								<div class="graph-container">
-									
+
 									<div id="graph-lines" sytle="height:400px"> </div>
 								</div>
-								
+
 								<!-- //graph script -->
 								<script src="js/jquery.flot.js"></script>
 									<script>
 									$(document).ready(function () {
-									
+
 										// Graph Data ##############################################
 										var graphData = [{
 												// Visits
@@ -519,7 +532,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 												points: { radius: 4, fillColor: '#fff' }
 											}
 										];
-									
+
 										// Lines Graph #############################################
 										$.plot($('#graph-lines'), graphData, {
 											series: {
@@ -546,7 +559,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 												tickSize: 1000
 											}
 										});
-									
+
 										// Bars Graph ##############################################
 										$.plot($('#graph-bars'), graphData, {
 											series: {
@@ -571,10 +584,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 												tickSize: 1000
 											}
 										});
-									
+
 										// Graph Toggle ############################################
 										$('#graph-bars').hide();
-									
+
 										$('#lines').on('click', function (e) {
 											$('#bars').removeClass('active');
 											$('#graph-bars').fadeOut();
@@ -582,7 +595,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 											$('#graph-lines').fadeIn();
 											e.preventDefault();
 										});
-									
+
 										$('#bars').on('click', function (e) {
 											$('#lines').removeClass('active');
 											$('#graph-lines').fadeOut();
@@ -590,7 +603,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 											$('#graph-bars').fadeIn().removeClass('hidden');
 											e.preventDefault();
 										});
-									
+
 										// Tooltip #################################################
 										function showTooltip(x, y, contents) {
 											$('<div id="tooltip">' + contents + '</div>').css({
@@ -598,9 +611,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 												left: x + 20
 											}).appendTo('body').fadeIn();
 										}
-									
+
 										var previousPoint = null;
-									
+
 										$('#graph-lines, #graph-bars').bind('plothover', function (event, pos, item) {
 											if (item) {
 												if (previousPoint != item.dataIndex) {
@@ -615,34 +628,34 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 												previousPoint = null;
 											}
 										});
-									
+
 									});
 									</script>
-									
+
 									<!-- //graph script -->
-	
+
 				</div>
 			</div>
 		</div>
-				
+
 				<div class="clearfix"></div>
 			</div>
 				<script  src="js/index.js"></script>
-			
-			</div>	
-				
+
+			</div>
+
 		</div>
 		<!--footer-->
 		<div class="footer">
 		   <p>&copy; 2018 Glance Design Dashboard. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>
 		</div>
         <!--//footer-->
-	
+
 	<!-- new added graphs chart js-->
-	
+
     <script src="js/Chart.bundle.js"></script>
     <script src="js/utils.js"></script>
-	
+
 	<script>
         var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         var color = Chart.helpers.color;
@@ -767,14 +780,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
 				showLeftPush = document.getElementById( 'showLeftPush' ),
 				body = document.body;
-				
+
 			showLeftPush.onclick = function() {
 				classie.toggle( this, 'active' );
 				classie.toggle( body, 'cbp-spmenu-push-toright' );
 				classie.toggle( menuLeft, 'cbp-spmenu-open' );
 				disableOther( 'showLeftPush' );
 			};
-			
+
 			function disableOther( button ) {
 				if( button !== 'showLeftPush' ) {
 					classie.toggle( showLeftPush, 'disabled' );
@@ -782,26 +795,26 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 			}
 		</script>
 	<!-- //Classie --><!-- //for toggle left push menu script -->
-	
+
 	<!--scrolling js-->
 	<script src="js/jquery.nicescroll.js"></script>
 	<script src="js/scripts.js"></script>
 	<!--//scrolling js-->
-	
+
 	<!-- Bootstrap Core JavaScript -->
    <script src="js/bootstrap.js"> </script>
-   
+
 	<!-- candlestick --><!-- for points and multiple y-axis charts js -->
 	<script type="text/javascript" src="js/jquery.jqcandlestick.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/jqcandlestick.css" />
 	<!-- //candlestick --><!-- //for points and multiple y-axis charts js -->
-		
+
 	<!-- side nav js -->
 	<script src='js/SidebarNav.min.js' type='text/javascript'></script>
 	<script>
       $('.sidebar-menu').SidebarNav()
     </script>
 	<!-- //side nav js -->
-	
+
 </body>
 </html>

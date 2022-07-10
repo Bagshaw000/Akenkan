@@ -4,13 +4,23 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<?php
+//Getting neccessary files
+    require_once("../controllers/user_controller.php");
+    require_once("../settings/core.php");
+
+    //Enforcing admin only success
+    if (!(is_user_signed_in() && is_session_user_admin())){
+        header("Location: login.php");
+    }
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
 <title>Glance Design Dashboard an Admin Panel Category Flat Bootstrap Responsive Website Template | General Elements :: w3layouts</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
@@ -21,20 +31,20 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 
 <!-- font-awesome icons CSS -->
-<link href="css/font-awesome.css" rel="stylesheet"> 
+<link href="css/font-awesome.css" rel="stylesheet">
 <!-- //font-awesome icons CSS -->
 
  <!-- side nav css file -->
  <link href='css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
  <!-- side nav css file -->
- 
+
  <!-- js-->
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/modernizr.custom.js"></script>
 
 <!--webfonts-->
 <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
-<!--//webfonts--> 
+<!--//webfonts-->
 
 <!-- Metis Menu -->
 <script src="js/metisMenu.min.js"></script>
@@ -42,7 +52,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <link href="css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
 
-</head> 
+</head>
 <body class="cbp-spmenu-push">
 	<div class="main-content">
 	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
@@ -155,11 +165,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
     </aside>
 	</div>
 		<!--left-fixed -navigation-->
-		
+
 		<!-- header-starts -->
 		<div class="sticky-header header-section ">
 			<div class="header-left">
-				
+
 				<!--toggle button start-->
 				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
 				<!--toggle button end-->
@@ -179,7 +189,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									<p>Lorem ipsum dolor amet</p>
 									<p><span>1 hour ago</span></p>
 									</div>
-								   <div class="clearfix"></div>	
+								   <div class="clearfix"></div>
 								</a></li>
 								<li class="odd"><a href="#">
 									<div class="user_img"><img src="images/4.jpg" alt=""></div>
@@ -187,7 +197,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									<p>Lorem ipsum dolor amet </p>
 									<p><span>1 hour ago</span></p>
 									</div>
-								  <div class="clearfix"></div>	
+								  <div class="clearfix"></div>
 								</a></li>
 								<li><a href="#">
 								   <div class="user_img"><img src="images/3.jpg" alt=""></div>
@@ -195,12 +205,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									<p>Lorem ipsum dolor amet </p>
 									<p><span>1 hour ago</span></p>
 									</div>
-								   <div class="clearfix"></div>	
+								   <div class="clearfix"></div>
 								</a></li>
 								<li>
 									<div class="notification_bottom">
 										<a href="#">See all messages</a>
-									</div> 
+									</div>
 								</li>
 							</ul>
 						</li>
@@ -218,7 +228,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									<p>Lorem ipsum dolor amet</p>
 									<p><span>1 hour ago</span></p>
 									</div>
-								  <div class="clearfix"></div>	
+								  <div class="clearfix"></div>
 								 </a></li>
 								 <li class="odd"><a href="#">
 									<div class="user_img"><img src="images/1.jpg" alt=""></div>
@@ -226,7 +236,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									<p>Lorem ipsum dolor amet </p>
 									<p><span>1 hour ago</span></p>
 									</div>
-								   <div class="clearfix"></div>	
+								   <div class="clearfix"></div>
 								 </a></li>
 								 <li><a href="#">
 									<div class="user_img"><img src="images/3.jpg" alt=""></div>
@@ -234,15 +244,15 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									<p>Lorem ipsum dolor amet </p>
 									<p><span>1 hour ago</span></p>
 									</div>
-								   <div class="clearfix"></div>	
+								   <div class="clearfix"></div>
 								 </a></li>
 								 <li>
 									<div class="notification_bottom">
 										<a href="#">See all notifications</a>
-									</div> 
+									</div>
 								</li>
 							</ul>
-						</li>	
+						</li>
 						<li class="dropdown head-dpdn">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">8</span></a>
 							<ul class="dropdown-menu">
@@ -254,7 +264,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<li><a href="#">
 									<div class="task-info">
 										<span class="task-desc">Database update</span><span class="percentage">40%</span>
-										<div class="clearfix"></div>	
+										<div class="clearfix"></div>
 									</div>
 									<div class="progress progress-striped active">
 										<div class="bar yellow" style="width:40%;"></div>
@@ -263,7 +273,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<li><a href="#">
 									<div class="task-info">
 										<span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
-									   <div class="clearfix"></div>	
+									   <div class="clearfix"></div>
 									</div>
 									<div class="progress progress-striped active">
 										 <div class="bar green" style="width:90%;"></div>
@@ -272,7 +282,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<li><a href="#">
 									<div class="task-info">
 										<span class="task-desc">Mobile App</span><span class="percentage">33%</span>
-										<div class="clearfix"></div>	
+										<div class="clearfix"></div>
 									</div>
 								   <div class="progress progress-striped active">
 										 <div class="bar red" style="width: 33%;"></div>
@@ -281,7 +291,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<li><a href="#">
 									<div class="task-info">
 										<span class="task-desc">Issues fixed</span><span class="percentage">80%</span>
-									   <div class="clearfix"></div>	
+									   <div class="clearfix"></div>
 									</div>
 									<div class="progress progress-striped active">
 										 <div class="bar  blue" style="width: 80%;"></div>
@@ -290,10 +300,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<li>
 									<div class="notification_bottom">
 										<a href="#">See all pending tasks</a>
-									</div> 
+									</div>
 								</li>
 							</ul>
-						</li>	
+						</li>
 					</ul>
 					<div class="clearfix"> </div>
 				</div>
@@ -301,8 +311,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"> </div>
 			</div>
 			<div class="header-right">
-				
-				
+
+
 				<!--search-box-->
 				<div class="search-box">
 					<form class="input">
@@ -314,34 +324,37 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 						</label>
 					</form>
 				</div><!--//end-search-box-->
-				
-				<div class="profile_details">		
+
+				<div class="profile_details">
 					<ul>
 						<li class="dropdown profile_details_drop">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-								<div class="profile_img">	
-									<span class="prfil-img"><img src="images/2.jpg" alt=""> </span> 
+								<div class="profile_img">
+									<span class="prfil-img"><img src="images/2.jpg" alt=""> </span>
 									<div class="user-name">
-										<p>Admin Name</p>
+                                        <?php
+                                        $name = get_user_name_by_id_ctrl(get_session_user_id());
+                                            echo "<p> $name</p>";
+                                        ?>
 										<span>Administrator</span>
 									</div>
 									<i class="fa fa-angle-down lnr"></i>
 									<i class="fa fa-angle-up lnr"></i>
-									<div class="clearfix"></div>	
-								</div>	
+									<div class="clearfix"></div>
+								</div>
 							</a>
 							<ul class="dropdown-menu drp-mnu">
-								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
+								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
 								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
-								<li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li> 
+								<li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
 								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
 							</ul>
 						</li>
 					</ul>
 				</div>
-				<div class="clearfix"> </div>				
+				<div class="clearfix"> </div>
 			</div>
-			<div class="clearfix"> </div>	
+			<div class="clearfix"> </div>
 		</div>
 		<!-- //header-ends -->
 		<!-- main content start-->
@@ -382,16 +395,16 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 										<h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4>
 									</div>
 									<div class="modal-body">
-										<div class="row-info"> 
-											<div class="col-md-4">.col-md-4</div> 
-											<div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div> 
-										</div>  
-										<div class="row"> 
-											<div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div> 
-										</div> 
+										<div class="row-info">
+											<div class="col-md-4">.col-md-4</div>
+											<div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+										</div>
 										<div class="row">
-											<div class="col-sm-9"> Level 1: .col-sm-9 
-										<div class="row"> <div class="col-xs-8 col-sm-6"> Level 2: .col-xs-8 .col-sm-6 </div> 
+											<div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+										</div>
+										<div class="row">
+											<div class="col-sm-9"> Level 1: .col-sm-9
+										<div class="row"> <div class="col-xs-8 col-sm-6"> Level 2: .col-xs-8 .col-sm-6 </div>
 										<div class="col-xs-4 col-sm-6"> Level 2: .col-xs-4 .col-sm-6 </div> </div> </div> </div> </div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -434,11 +447,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
 						<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 							<div class="modal-dialog modal-sm">
-								<div class="modal-content"> 
+								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-										<h4 class="modal-title" id="mySmallModalLabel">Small modal</h4> 
-									</div> 
+										<h4 class="modal-title" id="mySmallModalLabel">Small modal</h4>
+									</div>
 									<div class="modal-body"> Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
 									</div>
 								</div>
@@ -450,38 +463,38 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				<div class="row">
 					<div class="col-md-6 general-grids widget-shadow">
 						<h4 class="title2">ScrollSpy example :</h4>
-						<div class="bs-example1" data-example-id="embedded-scrollspy"> 
-							<nav id="navbar-example2" class="navbar navbar-default navbar-static"> 
-								<div class="container-fluid"> 
-									<div class="navbar-header"> 
-										<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-scrollspy"> <span class="sr-only">Toggle navigation</span> 
-											<span class="icon-bar"></span> 
-											<span class="icon-bar"></span> 
-											<span class="icon-bar"></span> 
-										</button> 
-										<a class="navbar-brand" href="index.php">Project Name</a> 
-									</div> 
-									<div class="collapse navbar-collapse bs-example-js-navbar-scrollspy"> 
-										<ul class="nav navbar-nav"> 
-											<li class="active"><a href="#fat">Item 1</a></li> 
-											<li class=""><a href="#three">Item 2</a></li> 
-											<li class=""><a href="#four">Item 3</a></li> 
-											<li class="dropdown"> <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">New Items<span class="caret"></span></a> 
-												<ul class="dropdown-menu" aria-labelledby="navbarDrop1"> <li class=""><a href="#one">product 1</a></li> 
-													<li class=""><a href="#two">product 2</a></li> 
-												</ul> 
-											</li> 
-										</ul> 
-									</div> 
-								</div> 
-							</nav> 
-							<div data-spy="scroll" data-target="#navbar-example2" class="scrollspy-example scroll scrollbar1"> 
-								<h4 id="fat">Item 1</h4><p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamust.</p> 
-								<h4 id="three">Item 2</h4> <p>Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatevthundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. </p> <p>Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats. </p> 							
-								<h4 id="four">Item 3</h4> <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatevthundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. </p> <p>Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats. </p> 							
-								<h4 id="one">New Product 1</h4> <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p> 
-								<h4 id="two">New Product 2</h4> <p>In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p> 
-							</div> 
+						<div class="bs-example1" data-example-id="embedded-scrollspy">
+							<nav id="navbar-example2" class="navbar navbar-default navbar-static">
+								<div class="container-fluid">
+									<div class="navbar-header">
+										<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-scrollspy"> <span class="sr-only">Toggle navigation</span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+											<span class="icon-bar"></span>
+										</button>
+										<a class="navbar-brand" href="index.php">Project Name</a>
+									</div>
+									<div class="collapse navbar-collapse bs-example-js-navbar-scrollspy">
+										<ul class="nav navbar-nav">
+											<li class="active"><a href="#fat">Item 1</a></li>
+											<li class=""><a href="#three">Item 2</a></li>
+											<li class=""><a href="#four">Item 3</a></li>
+											<li class="dropdown"> <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">New Items<span class="caret"></span></a>
+												<ul class="dropdown-menu" aria-labelledby="navbarDrop1"> <li class=""><a href="#one">product 1</a></li>
+													<li class=""><a href="#two">product 2</a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</nav>
+							<div data-spy="scroll" data-target="#navbar-example2" class="scrollspy-example scroll scrollbar1">
+								<h4 id="fat">Item 1</h4><p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamust.</p>
+								<h4 id="three">Item 2</h4> <p>Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatevthundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. </p> <p>Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats. </p>
+								<h4 id="four">Item 3</h4> <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatevthundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. </p> <p>Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats. </p>
+								<h4 id="one">New Product 1</h4> <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
+								<h4 id="two">New Product 2</h4> <p>In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
+							</div>
 						</div>
 					</div>
 					<div class="col-md-6 general-grids grids-right widget-shadow">
@@ -493,11 +506,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="tool-tips widget-shadow">
 					<h4 class="title2">Tooltips :</h4>
-					<div class="bs-example-tooltips"> 
-						<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="" data-original-title="Tooltip on left">Tooltip on left</button> 
-						<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">Tooltip on top</button> 
+					<div class="bs-example-tooltips">
+						<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="" data-original-title="Tooltip on left">Tooltip on left</button>
+						<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">Tooltip on top</button>
 						<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Tooltip on bottom">Tooltip on bottom</button>
-						<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right">Tooltip on right</button> 
+						<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on right">Tooltip on right</button>
 						<script>$(function () {
 						  $('[data-toggle="tooltip"]').tooltip()
 						})</script>
@@ -505,7 +518,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="tool-tips widget-shadow">
 					<h4 class="title2">Popovers :</h4>
-					<div class="bs-example-tooltips"> 
+					<div class="bs-example-tooltips">
 						<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
 						  Popover on left
 						</button>
@@ -609,28 +622,28 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 		   <p>&copy; 2018 Glance Design Dashboard. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts</a></p>		</div>
         <!--//footer-->
 	</div>
-	
+
 	<!-- side nav js -->
 	<script src='js/SidebarNav.min.js' type='text/javascript'></script>
 	<script>
       $('.sidebar-menu').SidebarNav()
     </script>
 	<!-- //side nav js -->
-	
+
 	<!-- Classie --><!-- for toggle left push menu script -->
 		<script src="js/classie.js"></script>
 		<script>
 			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
 				showLeftPush = document.getElementById( 'showLeftPush' ),
 				body = document.body;
-				
+
 			showLeftPush.onclick = function() {
 				classie.toggle( this, 'active' );
 				classie.toggle( body, 'cbp-spmenu-push-toright' );
 				classie.toggle( menuLeft, 'cbp-spmenu-open' );
 				disableOther( 'showLeftPush' );
 			};
-			
+
 			function disableOther( button ) {
 				if( button !== 'showLeftPush' ) {
 					classie.toggle( showLeftPush, 'disabled' );
@@ -638,12 +651,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 			}
 		</script>
 	<!-- //Classie --><!-- //for toggle left push menu script -->
-		
+
 	<!--scrolling js-->
 	<script src="js/jquery.nicescroll.js"></script>
 	<script src="js/scripts.js"></script>
 	<!--//scrolling js-->
-	
+
 	<!-- Bootstrap Core JavaScript -->
    <script src="js/bootstrap.js"> </script>
 </body>

@@ -5,7 +5,14 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <?php
-	// getting neccessary php files 
+//Getting neccessary files
+    require_once("../controllers/user_controller.php");
+    require_once("../settings/core.php");
+
+    //Enforcing admin only success
+    if (!(is_user_signed_in() && is_session_user_admin())){
+        header("Location: login.php");
+    }
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -245,7 +252,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<div class="profile_img">
 									<span class="prfil-img"><img src="images/2.jpg" alt=""> </span>
 									<div class="user-name">
-										<p>Admin Name</p>
+                                        <?php
+                                        $name = get_user_name_by_id_ctrl(get_session_user_id());
+                                            echo "<p> $name</p>";
+                                        ?>
 										<span>Administrator</span>
 									</div>
 									<i class="fa fa-angle-down lnr"></i>
