@@ -1,16 +1,19 @@
-<!--A Design by W3layouts 
+<!--A Design by W3layouts
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<?php
+	require_once("../settings/core.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Big shope A Ecommerce Category Flat Bootstarp Responsive Website Template | Register :: w3layouts</title>
+<title>Akenkan | Register </title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -21,7 +24,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 </head>
-<body> 
+<body>
 	<!--header-->
 	<div class="header">
 		<div class="top-header">
@@ -42,7 +45,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li class="van"><a href="#"><label> </label></a></li>
 						<li><a href="#">Free shipping <span class="live"></span></a></li>
 					</ul>
-				 <!-- <div class="down-top">		
+				 <!-- <div class="down-top">
 						  <select class="in-drop">
 							  <option value="English" class="in-of">English</option>
 							  <option value="Japanese" class="in-of">Japanese</option>
@@ -52,16 +55,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					 </div> -->
 					<!-- <div class="down-top top-down">
 						  <select class="in-drop">
-						  
+
 						  <option value="Dollar" class="in-of">Dollar</option>
 						  <option value="Yen" class="in-of">Yen</option>
 						  <option value="Euro" class="in-of">Euro</option>
 							</select>
 					 </div> -->
 					 <!---->
-					<div class="clearfix"> </div>	
+					<div class="clearfix"> </div>
 				</div>
-				<div class="clearfix"> </div>		
+				<div class="clearfix"> </div>
 			</div>
 		</div>
 		<div class="bottom-header">
@@ -77,7 +80,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="clearfix"> </div>
 				</div>
-				<div class="header-bottom-right">					
+				<div class="header-bottom-right">
 						<div class="account"><a href="login.php"><span> </span>YOUR ACCOUNT</a></div>
 							<ul class="login">
 								<li><a href="login.php"><span> </span>LOGIN</a></li> |
@@ -86,29 +89,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="cart"><a href="#"><span> </span>CART</a></div>
 					<div class="clearfix"> </div>
 				</div>
-				<div class="clearfix"> </div>	
+				<div class="clearfix"> </div>
 			</div>
 		</div>
 	</div>
 	<!---->
-	<div class="container"> 
-			         
+	<div class="container">
+
 		<div class="register">
-		  	  <form> 
+		  	  <form>
 				 <div class="  register-top-grid">
 					<h3>PERSONAL INFORMATION</h3>
 					<div class="mation">
 						<span><b>Username</b><label>*</label></span>
-						<input type="text"> 
-					
+						<input type="text" id="username">
+						<small>This field cannot be blank</small>
+
 						<span><b>Email</b><label>*</label></span>
-						<input type="email"> 
-					 
+						<input type="email" id="email">
+						<small id="email_error">Enter a valid email</small>
+
 						 <span><b>Password</b><label>*</label></span>
-						 <input type="password"> 
+						 <input type="password" id="password">
+						 <small id="pass_error_len">Must be at least 5 characters long</small>
+						 <small id="pass_error_num">Must be contain at least one number</small>
 
 						 <span><b>Confirm Password</b><label>*</label></span>
-						 <input type="password"> 
+						 <input type="password" id="confirm_password">
+						 <small id="pass_error_confirm">The passwords do not match</small>
 					</div>
 					 <div class="clearfix"> </div>
 					   <a class="news-letter" href="#">
@@ -128,7 +136,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="clearfix"> </div>
 				<div class="register-but">
 				   <form>
-					   <input type="submit" value="submit">
+					<script src="../js/auth.js"></script>
+					   <input type="submit" onclick="return onsignupsubmit()" value="Sign Up" id="register_btn">
 					   <div class="clearfix"> </div>
 				   </form>
 				</div>
@@ -138,22 +147,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<h3 class="cate">CATEGORIES</h3>
 					<ul class="menu">
 					<li class="item1"><a href="#">Drama </a>
-						
+
 					</li>
 					<li class="item2"><a href="#">Adventure </a>
-						
+
 					</li>
 					<li class="item3"><a href="#">Fantasy </a>
-						
+
 					</li>
 					<li class="item4"><a href="#">Romance </a>
-						
+
 					</li>
 					<li class="item5"><a href="#">Sci-Fi </a>
-						
+
 					</li>
 					<li class="item6"><a href="#">Comedy </a>
-						
+
 					</li>
 			<!-- <li>
 		<ul class="kid-menu">
@@ -162,7 +171,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		</ul>
 	</li> -->
-	
+
 </ul>
 				</div>
 			<!--initiate accordion-->
@@ -182,18 +191,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					$(this).next().stop(true,true).slideUp('normal');
 				}
 			});
-		
+
 		});
 	</script> -->
 				<!-- <div class=" chain-grid menu-chain">
-						<a href="single.php"><img class="img-responsive chain" src="images/wat.jpg" alt=" " /></a>	   		     		
+						<a href="single.php"><img class="img-responsive chain" src="images/wat.jpg" alt=" " /></a>
 						<div class="grid-chain-bottom chain-watch">
 							<span class="actual dolor-left-grid">300$</span>
-							<span class="reducedfrom">500$</span>  
-							<h6>Lorem ipsum dolor</h6>  		     			   		     										
+							<span class="reducedfrom">500$</span>
+							<h6>Lorem ipsum dolor</h6>
 						</div>
 					</div>
-					 <a class="view-all all-product" href="product.php">VIEW ALL PRODUCTS<span> </span></a> 	
+					 <a class="view-all all-product" href="product.php">VIEW ALL PRODUCTS<span> </span></a>
 		</div> -->
 		  <div class="clearfix"> </div>
 	   </div>
@@ -233,7 +242,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li ><a href="#">Biographies</a></li>
 						<li><a href="#">Romance</a></li>
 						<li><a href="#">Comedy</a></li>
-						
+
 					</ul>
 				</div>
 				<div class="footer-bottom-cate bottom-grid-cat">
