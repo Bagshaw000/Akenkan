@@ -68,7 +68,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <h1><a class="navbar-brand" href="index.php"><span class="fa fa-area-chart"></span> Glance<span class="dashboard_text">Design dashboard</span></a></h1>
+            <h1><a class="navbar-brand" href="index.php"><span class="fa fa-area-chart"></span> Akenkan<span class="dashboard_text">Design dashboard</span></a></h1>
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
@@ -89,32 +89,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <li><a href="media.php"><i class="fa fa-angle-right"></i> Add book</a></li>
                 </ul>
               </li>
-              <li class="treeview">
-                <a href="charts.php">
-                <i class="fa fa-pie-chart"></i>
-                <span>Charts</span>
-                <span class="label label-primary pull-right">new</span>
-                </a>
-              </li>
-              <li class="treeview">
-                <a href="#">
-                <i class="fa fa-laptop"></i>
-                <span>UI Elements</span>
-                <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="general.php"><i class="fa fa-angle-right"></i> General</a></li>
-                  <li><a href="icons.php"><i class="fa fa-angle-right"></i> Icons</a></li>
-                  <li><a href="buttons.php"><i class="fa fa-angle-right"></i> Buttons</a></li>
-                  <li><a href="typography.php"><i class="fa fa-angle-right"></i> Typography</a></li>
-                </ul>
-              </li>
-			  <li>
-                <a href="widgets.php">
-                <i class="fa fa-th"></i> <span>Widgets</span>
-                <small class="label pull-right label-info">08</small>
-                </a>
-              </li>
+            			 
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-edit"></i> <span>Purchase</span>
@@ -125,15 +100,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <li><a href="validation.php"><i class="fa fa-angle-right"></i> Transactions</a></li>
                 </ul>
               </li>
-              <li class="treeview">
-                <a href="#">
-                <i class="fa fa-table"></i> <span>Tables</span>
-                <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="tables.php"><i class="fa fa-angle-right"></i> Simple tables</a></li>
-                </ul>
-              </li>
+           
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-envelope"></i> <span>Feedback</span>
@@ -143,23 +110,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <li><a href="compose.php"><i class="fa fa-angle-right"></i> Issues </a></li>
                 </ul>
               </li>
-              <li class="treeview">
-                <a href="#">
-                <i class="fa fa-folder"></i> <span>Examples</span>
-                <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="login.php"><i class="fa fa-angle-right"></i> Login</a></li>
-                  <li><a href="signup.php"><i class="fa fa-angle-right"></i> Register</a></li>
-                  <li><a href="404.php"><i class="fa fa-angle-right"></i> 404 Error</a></li>
-                  <li><a href="500.php"><i class="fa fa-angle-right"></i> 500 Error</a></li>
-                  <li><a href="blank-page.php"><i class="fa fa-angle-right"></i> Blank Page</a></li>
-                </ul>
-              </li>
-              <li class="header">LABELS</li>
-              <li><a href="#"><i class="fa fa-angle-right text-red"></i> <span>Important</span></a></li>
-              <li><a href="#"><i class="fa fa-angle-right text-yellow"></i> <span>Warning</span></a></li>
-              <li><a href="#"><i class="fa fa-angle-right text-aqua"></i> <span>Information</span></a></li>
+      
             </ul>
           </div>
           <!-- /.navbar-collapse -->
@@ -365,7 +316,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							<div class="mb-3">
 								<label for="exampleInputEmail1" class="form-label">Publisher name</label>
 								<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-								<div id="emailHelp" class="form-text">Pls enter the authors name</div>
+								<div id="emailHelp" class="form-text">Pls enter the publisher name</div>
 							</div>
 		
 							<button type="submit" class="btn btn-primary">Submit</button>
