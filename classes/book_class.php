@@ -18,9 +18,9 @@ class book_class extends db_connection
      * This function insert the book details in the database
      * @return bool
      */
-    function insert_book_cls($book_id,$title,$desc,$p_date,$date_added,$p_id, $author, $status){
-        $sql = "INSERT INTO `books`(`book_id`, `title`, `description`, `publish_date`, `date_added`, `publisher_id`, `author_id`, `book_status`)
-         VALUES ('$book_id','$title','$desc','$p_date','$date_added','$p_id', '$author', '$status')";
+    function insert_book_cls($book_id,$title,$desc,$p_date,$date_added,$p_id, $author, $status, $price){
+        $sql = "INSERT INTO `books`(`book_id`, `title`, `description`, `publish_date`, `date_added`, `publisher_id`, `author_id`, `book_status`, `price`)
+         VALUES ('$book_id','$title','$desc','$p_date','$date_added','$p_id', '$author', '$status', '$price')";
 
          return $this->db_query($sql);
     }
@@ -107,6 +107,11 @@ class book_class extends db_connection
         return $this->db_fetch_all($sql);
     }
 
+    function get_author_name_by_id_cls($id){
+        $sql = "SELECT `author_name` FROM `author` WHERE `author_id`='$id'";
+        return $this->db_fetch_one($sql);
+    }
+
 
     function filter_books_by_genre_cls($filters){
         $sql = "SELECT * FROM `books` WHERE $filters";
@@ -132,7 +137,7 @@ class book_class extends db_connection
      * This function update the status of books with the passed id
      * @return bool
      */
-    function change_book_status($book_id,$status){
+    function update_book_status_cls($book_id,$status){
         $sql = "UPDATE `books` SET `book_status`='$status' WHERE `book_id`='$book_id'";
         return $this->db_query($sql);
     }

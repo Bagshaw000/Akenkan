@@ -34,6 +34,7 @@
 	} else if ($_POST["action"]=="add_book"){
 		$id = $_POST["id"];
 		$name = $_POST["title"];
+		$price = $_POST["price"];
 		$description = $_POST["description"];
 		$publish_date = $_POST["publish_date"];
 		$status = $_POST["status"];
@@ -43,13 +44,22 @@
 		$date = date('Y-m-d');
 		$image = null;
 
-		$success = insert_book_ctr($id,$name,$description,$publish_date,$date,$author,$publisher,$status);
+		$success = insert_book_ctr($id,$name,$description,$publish_date,$date,$author,$publisher,$status,$price);
 		if ($success){
 			echo "Added Book: $name";
 		} else {
 			echo "Couldn't add genre. It might already exist";
 		}
-	} else {
+	} else if ($_POST["action"]=="update_status"){
+		$id = explode("_",$_POST["id"])[1];
+		$status = $_POST["status"];
+		$succes = update_book_status_ctrl($id,$status);
+		if ($succes){
+			echo "Status updated";
+		} else {
+			echo "Status change failed";
+		}
+	}else {
 		echo "Unsupported Action";
 	}
 ?>

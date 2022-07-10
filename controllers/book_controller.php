@@ -15,11 +15,11 @@ require_once("../functions/function_store.php");
  * @return error
  */
 
-function insert_book_ctr($book_id,$title,$desc,$p_date,$date_added,$author,$p_id,$status)
+function insert_book_ctr($book_id,$title,$desc,$p_date,$date_added,$author,$p_id,$status, $price)
 {
     try{
         $data = new book_class();
-        return $data->insert_book_cls($book_id,cleanText ($title),cleanText($desc),cleanText($p_date),cleanText($date_added),cleanText($p_id),cleanText($author), $status);
+        return $data->insert_book_cls($book_id,cleanText ($title),cleanText($desc),cleanText($p_date),cleanText($date_added),cleanText($p_id),cleanText($author), $status, $price);
     }
     catch(exception $e){
         return $e;
@@ -122,6 +122,11 @@ function get_books_by_publisher_ctrl($id){
     return $book->get_books_by_publisher_cls($id);
 }
 
+function get_author_name_by_id_ctrl($id){
+    $book = new book_class();
+    return $book->get_author_name_by_id_cls($id)["author_name"];
+}
+
 //--UPDATE--//
 /**
  * This function take the info to be updated from the proc page and passs it
@@ -141,6 +146,11 @@ function update_book_ctr($book_id,$title,$desc,$p_date,$date_added,$b_perm,$p_id
         }
 }
 
+function update_book_status_ctrl($id, $status){
+    $book = new book_class();
+    return $book->update_book_status_cls($id,$status);
+}
+
 //--DELETE--//
 /**
  * This function take the data to be deleted and updates the permission
@@ -152,7 +162,7 @@ function update_book_ctr($book_id,$title,$desc,$p_date,$date_added,$b_perm,$p_id
 function delete_book_ctr($id){
     try{
         $book = new book_class();
-        return $book->change_book_status($id,"deleted");
+        return $book->update_book_status_cls($id,"deleted");
     }catch(exception $e){
         return $e;
     }
@@ -161,7 +171,7 @@ function delete_book_ctr($id){
 
 function publish_book_ctrl($id){
     $book = new book_class();
-    return $book->change_book_status($id,"published");
+    return $book->update_book_status_cls($id,"published");
 }
 
 ?>

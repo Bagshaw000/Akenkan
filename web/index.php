@@ -9,6 +9,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 require_once("../settings/core.php");
 require_once("../controllers/cart_controllers.php");
 require_once("../controllers/user_controller.php");
+require_once("../controllers/book_controller.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -215,6 +216,32 @@ require_once("../controllers/user_controller.php");
 
 		?>
 	</div>
+
+	<?php
+		$books = select_all_published_book_ctrl();
+
+		foreach ($books as $item) {
+
+			$id = $item["book_id"];
+			$title = $item["title"];
+			$author = get_author_name_by_id_ctrl($item["author_id"]);
+			$price = $item["price"];
+			$status = $item["book_status"];
+			$image = $item["image_location"] ?? "images/1.jpg";
+
+			echo "<tr>";
+				echo "<td>
+
+					<img src='$image' style='display:block'>
+					$id
+				</td>";
+				echo "<td>$title</td>";
+				echo "<td>$author</td>";
+				echo "<td>$price</td>";
+				echo "<td>$status</td>";
+			echo "</tr>";
+		}
+	?>
 	<div class="product-left">
 		<div class="col-md-4 chain-grid">
 			<a href="single.php"><img class="img-responsive chain" src="images/48.jpg" alt=" " /></a>

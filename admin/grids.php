@@ -7,6 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <?php
 //Getting neccessary files
     require_once("../controllers/user_controller.php");
+    require_once("../controllers/book_controller.php");
     require_once("../settings/core.php");
 
     //Enforcing admin only success
@@ -264,6 +265,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</a>
 							<ul class="dropdown-menu drp-mnu">
+                                        <script src="../js/auth.js"></script>
 								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
 								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
 								<li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
@@ -284,6 +286,57 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				<h2 class="title1">All books</h2>
 				<div class="grids widget-shadow">
 
+				<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ISBN</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">item Price</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+	<script src="../js/upload_book.js"></script>
+	<?php
+		$books = select_all_book_ctr();
+
+		foreach ($books as $item) {
+
+			$id = $item["book_id"];
+			$title = $item["title"];
+			$author = get_author_name_by_id_ctrl($item["author_id"]);
+			$price = $item["price"];
+			$status = $item["book_status"];
+			$image = $item["image_location"] ?? "images/1.jpg";
+
+			echo "<tr>";
+				echo "<td>
+
+					<img src='$image' style='display:block'>
+					$id
+				</td>";
+				echo "<td>$title</td>\n";
+				echo "<td>$author</td>\n";
+				echo "<td>$price</td>\n";
+				echo "<td>\n
+					<select class='form-select' aria-label='Default select example' id='status_$id' onchange='return onStatusChange(this.id,this.value)'>\n";
+						$states = array("published","draft", "deleted");
+						foreach ($states as $current) {
+							if ($current == $status){
+								echo "<option value='$current' selected>$current</option>\n";
+							} else {
+								echo "<option value='$current'>$current</option>\n";
+							}
+						}
+					echo "</select></td>";
+				echo "</tr>";
+		}
+	?>
+
+
+  </tbody>
+</table>
 
 				</div>
 				<h3 class="title1">Bootstrap Grid Details</h3>

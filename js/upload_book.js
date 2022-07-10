@@ -11,6 +11,7 @@ function onBookUpload(){
 	var author = document.getElementById("author");
 	var genre = document.getElementById("genre");
 	var publisher = document.getElementById("publisher");
+	var price = document.getElementById("price");
 
 	const xhttp = new XMLHttpRequest();
 	xhttp.open("POST", "/akenkan/actions/book_processor.php");
@@ -18,14 +19,20 @@ function onBookUpload(){
 			if (xhttp.readyState == XMLHttpRequest.DONE){
 				if (xhttp.response == "Added Book: "+name.value){
 					alert(xhttp.response);
-					// resetElement(name);
+					resetElement(name);
+					resetElement(description);
+					resetElement(publish_date);
+					resetElement(id);
+					resetElement(publish_date);
+					resetElement(publisher);
+					resetElement(price);
 				}else {
 					alert(xhttp.response);
 				}
 			}
 		}
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhttp.send("action=add_book&title="+ name.value +"&description="+description.value +"&publish_date="+publish_date.value +"&status="+status.value +"&author="+author.value +"&genre="+genre.value +"&publisher="+publisher.value+"&id="+id.value  );
+		xhttp.send("action=add_book&title="+ name.value +"&description="+description.value +"&publish_date="+publish_date.value +"&status="+status.value +"&author="+author.value +"&genre="+genre.value +"&publisher="+publisher.value+"&id="+id.value +"&price="+price.value  );
 
 }
 
@@ -47,6 +54,20 @@ function onAuthorCreate(){
 		}
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send("action=add_author&name="+ name.value);
+
+
+}
+
+function onStatusChange(id, status){
+	const xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "/akenkan/actions/book_processor.php");
+		xhttp.onreadystatechange = function (){
+			if (xhttp.readyState == XMLHttpRequest.DONE){
+					alert(status +xhttp.response);
+			}
+		}
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send("action=update_status&id="+ id + "&status="+status);
 
 
 }

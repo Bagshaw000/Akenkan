@@ -7,6 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <?php
 require_once("../settings/core.php");
 require_once("../controllers/cart_controllers.php");
+require_once("../controllers/user_controller.php");
 
 ?>
 <!DOCTYPE html>

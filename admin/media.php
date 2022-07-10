@@ -313,6 +313,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<textarea class="form-control" id="description" rows="3"></textarea>
 							</div>
 							<div class="mb-3">
+								<label for="price" class="form-label">Book price</label>
+								<input type="number" class="form-control" id="price" aria-describedby="emailHelp">
+							</div>
+							<div class="mb-3">
 								<label for="publish_date" class="form-label">Date Published</label>
 								<input type="date" class="form-control" id="publish_date" aria-describedby="emailHelp">
 							</div>
@@ -414,7 +418,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							<div class="mb-3">
 								<label for="publisher_name" class="form-label">Publisher name</label>
 								<input type="text" class="form-control" id="publisher_name" aria-describedby="emailHelp">
-								<div id="publisher_help" class="form-text">Pls enter the authors name</div>
+								<div id="publisher_help" class="form-text">Pls enter the Publisher's name</div>
 							</div>
 
 							<button type="submit" onclick="onPublisherCreate()" class="btn btn-primary">Submit</button>
