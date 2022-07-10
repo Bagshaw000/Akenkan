@@ -81,7 +81,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 
 				<div class="header-bottom-right">					
-						<div class="account"><a href="login.php"><span> </span>YOUR ACCOUNT</a></div>
+						<div class="account"><a href="orderhistory.php"><span> </span>ORDERS</a></div>
 							<ul class="login">
 								<li><a href="login.php"><span> </span>LOGIN</a></li> |
 								<li ><a href="register.php">SIGNUP</a></li>

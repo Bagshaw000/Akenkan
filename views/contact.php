@@ -74,7 +74,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="clearfix"> </div>
 				</div>
 				<div class="header-bottom-right">					
-						<div class="account"><a href="login.html"><span> </span>YOUR ACCOUNT</a></div>
+						<div class="account"><a href="login.html"><span> </span>ORDERS</a></div>
 							<ul class="login">
 								<li><a href="login.html"><span> </span>LOGIN</a></li> |
 								<li ><a href="register.html">SIGNUP</a></li>

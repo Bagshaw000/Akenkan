@@ -155,7 +155,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
    	 		<h1>Total $38.97</h1>
    	 		<div class="tot-btn">
    	 			<a class="shop" href="#">Back to Shop</a>
-   	 			<a class="check" href="#">Continue to Checkout</a>
+   	 			<a class="check" href="checkout.php">Continue to Checkout</a>
    	 		</div>
    	 	</div>
    	   <div class="clear"> </div>

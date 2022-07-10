@@ -1244,6 +1244,19 @@ select.in-drop {
 	outline:none;
 	
 }
+
+
+.update{
+    background-color: #5463EA;
+    border: 2px solid #5463EA;
+    color: #FFF;
+    border-radius: 4px;
+    width: 80px;
+    height: 40px;
+}
+.update:hover{
+    background-color: #1e2ca5;
+}
 /*--responsive--*/
 @media(max-width:1440px){
 
@@ -1554,7 +1567,10 @@ img.banner-bag {
     height: 121px;
     overflow: hidden;
 }
-single.phpmedia="all"
+
+
+
+/* single.phpmedia="all" */
 p {
     margin: 0 0 10px;
 }
@@ -1752,3 +1768,8 @@ img.banner-bag {
 	padding: 0 0 0 6.2em;
 }
 }
+
+
+
+/* ADDITION */
+

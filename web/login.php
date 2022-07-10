@@ -76,7 +76,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="clearfix"> </div>
 				</div>
 				<div class="header-bottom-right">					
-						<div class="account"><a href="login.php"><span> </span>YOUR ACCOUNT</a></div>
+						<div class="account"><a href="orderhistory.php"><span> </span>ORDERS</a></div>
 							<ul class="login">
 								<li><a href="login.php"><span> </span>LOGIN</a></li> |
 								<li ><a href="register.php">SIGNUP</a></li>
@@ -110,7 +110,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			   </div>	
 			    <div class=" login-left">
 			  	 <h3>NEW CUSTOMERS</h3>
-				 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+				 <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in ORDERS and more.</p>
 				 <a class="acount-btn" href="register.php">Create an Account</a>
 			   </div>
 			   <div class="clearfix"> </div>
