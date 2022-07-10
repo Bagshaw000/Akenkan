@@ -7,6 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <?php
 //Getting neccessary files
     require_once("../controllers/user_controller.php");
+    require_once("../controllers/book_controller.php");
     require_once("../settings/core.php");
 
     //Enforcing admin only success
@@ -23,6 +24,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src="../js/upload_book.js"></script>
 
  <!-- Compiled and minified CSS -->
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -279,7 +281,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
 								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
 								<li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
-								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                                <?php echo "<li> <a href='#' onclick='onsignout()' ><i class='fa fa-sign-out'></i> Logout</a> </li>";?>
 							</ul>
 						</li>
 					</ul>
@@ -299,56 +301,74 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 						<form action='' enctype='multipart/form-data'>
 							<div class="mb-3">
-								<label for="exampleInputEmail1" class="form-label">Book title</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<label for="title" class="form-label">Book title</label>
+								<input type="text" class="form-control" id="title" aria-describedby="emailHelp">
 							</div>
 							<div class="mb-3">
-								<label for="exampleInputEmail1" class="form-label">ISBN number</label>
-								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<label for="id" class="form-label">ISBN number</label>
+								<input type="text" class="form-control" id="id" aria-describedby="emailHelp">
 							</div>
 							<div class="mb-3">
-								<label for="exampleFormControlTextarea1" class="form-label">Book description</label>
-								<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+								<label for="description" class="form-label">Book description</label>
+								<textarea class="form-control" id="description" rows="3"></textarea>
 							</div>
 							<div class="mb-3">
-								<label for="exampleInputEmail1" class="form-label">Date Published</label>
-								<input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+								<label for="publish_date" class="form-label">Date Published</label>
+								<input type="date" class="form-control" id="publish_date" aria-describedby="emailHelp">
 							</div>
-							<select class="form-select" aria-label="Default select example">
-								<option selected>Book status </option>
-								<option value="published">Published</option>
+							<select class="form-select" aria-label="Default select example" id="status">
+								<option value="published" selected>Published</option>
 								<option value="draft">Draft</option>
 								<option value="deleted">Deleted</option>
 							</select>
 							<div class="mb-3">
-								<label for="formFile" class="form-label">Default file input example</label>
-								<input class="form-control" type="file" id="formFile">
+								<label for="formFile" class="form-label">Book image</label>
+								<input class="form-control" type="file" id="image">
 							</div>
 
 							<div id="b-drop">
-							<select class="form-select" aria-label="Default select example">
-								<option selected>Author</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
-							</select>
-							<div class="space1"> </div>
-							<select class="form-select" aria-label="Default select example">
-								<option selected>Genre</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
-							</select>
-							<div class="mb-3">
+								<?php
+									$authors = get_all_authors_ctrl();
+									$genres = get_all_genres_ctrl();
+									$publishers = get_all_publishers_ctrl();
+
+									// ======================================Author drop down
+									echo "<select class='form-select' aria-label='Default select example' id='author'>";
+									foreach($authors as $item){
+										$id = $item["author_id"];
+										$name = $item["author_name"];
+										echo "<option value='$id'>$name</option>";
+									}
+									echo "</select>";
+									// ======================================Genre drop down
+									echo "<div id='space1'></div>";
+									echo "<select class='form-select' aria-label='Default select example' id='genre'>";
+									foreach($genres as $item){
+										$name = $item["genre_name"];
+										echo "<option value='$name'>$name</option>";
+									}
+									echo "</select>";
+									// ======================================Publisher drop down
+									echo "<div id='b-drop'>";
+									echo "<select class='form-select' aria-label='Default select example' id='publisher'>";
+									foreach($publishers as $item){
+										$id = $item["publisher_id"];
+										$name = $item["publisher_name"];
+										echo "<option value='$id'>$name</option>";
+									}
+									echo "</select>";
+									echo"</div>";
+								?>
+							<!-- <div class="mb-3">
 								<label for="exampleInputEmail1" class="form-label">Date Added</label>
 								<input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-							</div>
+							</div> -->
 
 							</div>
 
 
 
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="submit" class="btn btn-primary" onclick="onBookUpload()">Submit</button>
 						</form>
 
 
@@ -359,12 +379,28 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 						<form>
 							<div class="mb-3">
-								<label for="exampleInputEmail1" class="form-label">Author name</label>
-								<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-								<div id="emailHelp" class="form-text">Pls enter the authors name</div>
+								<label for="author_name" class="form-label">Author name</label>
+								<input type="text" class="form-control" id="author_name" aria-describedby="emailHelp">
+								<div id="author_help" class="form-text">Enter the authors name</div>
 							</div>
 
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="submit" onclick="onAuthorCreate()" class="btn btn-primary">Submit</button>
+						</form>
+
+
+					</div>
+					<h2 class="title1">Add Genre</h2>
+					<div class="bs-example5 widget-shadow" data-example-id="default-media">
+						<!-- Button trigger modal -->
+
+						<form>
+							<div class="mb-3">
+								<label for="genre_name" class="form-label">Genre</label>
+								<input type="text" class="form-control" id="genre_name" aria-describedby="emailHelp">
+								<div id="genre_help" class="form-text">Enter the genre name</div>
+							</div>
+
+							<button type="submit" onclick="onGenreCreate()" class="btn btn-primary">Submit</button>
 						</form>
 
 
@@ -376,12 +412,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 						<form>
 							<div class="mb-3">
-								<label for="exampleInputEmail1" class="form-label">Publisher name</label>
-								<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-								<div id="emailHelp" class="form-text">Pls enter the authors name</div>
+								<label for="publisher_name" class="form-label">Publisher name</label>
+								<input type="text" class="form-control" id="publisher_name" aria-describedby="emailHelp">
+								<div id="publisher_help" class="form-text">Pls enter the authors name</div>
 							</div>
 
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="submit" onclick="onPublisherCreate()" class="btn btn-primary">Submit</button>
 						</form>
 
 

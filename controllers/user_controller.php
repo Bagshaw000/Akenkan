@@ -1,7 +1,7 @@
 <?php
 //connect to the user account class
-include("../classes/users_class.php");
-include("../functions/function_store.php");
+require_once("../classes/users_class.php");
+require_once("../functions/function_store.php");
 
 //sanitize data
 

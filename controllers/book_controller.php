@@ -15,43 +15,25 @@ require_once("../functions/function_store.php");
  * @return error
  */
 
-function insert_book_ctr($book_id,$title,$desc,$p_date,$date_added,$author,$p_id)
+function insert_book_ctr($book_id,$title,$desc,$p_date,$date_added,$author,$p_id,$status)
 {
     try{
         $data = new book_class();
-        return $data->insert_book_cls($book_id,cleanText ($title),cleanText($desc),cleanText($p_date),cleanText($date_added),cleanText($p_id),cleanText($author));
+        return $data->insert_book_cls($book_id,cleanText ($title),cleanText($desc),cleanText($p_date),cleanText($date_added),cleanText($p_id),cleanText($author), $status);
     }
     catch(exception $e){
         return $e;
     }
 }
 
-
-function get_all_genres_ctrl(){
+function insert_author_ctrl( $name){
     $book = new book_class();
-    return $book->get_all_genres_cls();
+    return $book->insert_author_cls($name);
 }
 
-
-function get_all_authors_ctrl(){
+function insert_publisher_ctrl( $name){
     $book = new book_class();
-    return $book->get_all_authors_cls();
-}
-
-
-function get_all_publishers_ctrl(){
-    $book = new book_class();
-    return $book->get_all_publishers_cls();
-}
-
-function insert_author_ctrl($id, $name){
-    $book = new book_class();
-    return $book->insert_author_cls($id,$name);
-}
-
-function insert_publisher_ctrl($id, $name){
-    $book = new book_class();
-    return $book->insert_publisher_cls($id,$name);
+    return $book->insert_publisher_cls($name);
 }
 
 function insert_genre_ctrl($name){
@@ -75,6 +57,24 @@ function select_all_book_ctr(){
     }catch(exception $e){
         return $e;
     }
+}
+
+function get_all_publishers_ctrl(){
+    $book = new book_class();
+    return $book->get_all_publishers_cls();
+}
+
+
+
+function get_all_genres_ctrl(){
+    $book = new book_class();
+    return $book->get_all_genres_cls();
+}
+
+
+function get_all_authors_ctrl(){
+    $book = new book_class();
+    return $book->get_all_authors_cls();
 }
 
 //filters list of books by the passed list of genre ids delimited by +

@@ -1,6 +1,6 @@
 <?php
 //connect to database class
-require("../settings/db_class.php");
+require_once("../settings/db_class.php");
 
 /**
 *General class to handle all functions
@@ -18,9 +18,9 @@ class book_class extends db_connection
      * This function insert the book details in the database
      * @return bool
      */
-    function insert_book_cls($book_id,$title,$desc,$p_date,$date_added,$p_id, $author){
-        $sql = "INSERT INTO `books`(`book_id`, `title`, `description`, `publish_date`, `date_added`, `publisher_id`, `author_id`)
-         VALUES ('$book_id','$title','$desc','$p_date','$date_added','$p_id', '$author')";
+    function insert_book_cls($book_id,$title,$desc,$p_date,$date_added,$p_id, $author, $status){
+        $sql = "INSERT INTO `books`(`book_id`, `title`, `description`, `publish_date`, `date_added`, `publisher_id`, `author_id`, `book_status`)
+         VALUES ('$book_id','$title','$desc','$p_date','$date_added','$p_id', '$author', '$status')";
 
          return $this->db_query($sql);
     }
@@ -32,18 +32,18 @@ class book_class extends db_connection
     }
 
 
-    function insert_author_cls($id, $name){
-        $sql = "INSERT INTO `author` (`author_id`,`author_name`) VALUES ( '$id','$name')";
+    function insert_author_cls( $name){
+        $sql = "INSERT INTO `author` (`author_name`) VALUES ( '$name')";
         return $this->db_query($sql);
     }
 
-    function insert_publisher_cls($id, $name){
-        $sql = "INSERT INTO `publisher` (`publisher_id`,`publisher_name`) VALUES ( '$id','$name')";
+    function insert_publisher_cls($name){
+        $sql = "INSERT INTO `publisher` (`publisher_name`) VALUES ( '$name')";
         return $this->db_query($sql);
     }
 
     function insert_genre_cls( $name){
-        $sql = "INSERT INTO `genre` (`genre_name`) VALUES ( '$name')";
+        $sql = "INSERT INTO `genres` (`genre_name`) VALUES ( '$name')";
         return $this->db_query($sql);
     }
 
@@ -63,7 +63,7 @@ class book_class extends db_connection
 
 
     function get_all_genres_cls(){
-        $sql = "SELECT * FROM `genre`";
+        $sql = "SELECT * FROM `genres`";
         return $this->db_fetch_all($sql);
     }
 
