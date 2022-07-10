@@ -45,10 +45,11 @@
 		$image = null;
 
 		$success = insert_book_ctr($id,$name,$description,$publish_date,$date,$author,$publisher,$status,$price);
+		join_book_genre_ctrl($id,$genre);
 		if ($success){
 			echo "Added Book: $name";
 		} else {
-			echo "Couldn't add genre. It might already exist";
+			echo "Couldn't add Book. It might already exist";
 		}
 	} else if ($_POST["action"]=="update_status"){
 		$id = explode("_",$_POST["id"])[1];

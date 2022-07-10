@@ -25,7 +25,10 @@ function insert_book_ctr($book_id,$title,$desc,$p_date,$date_added,$author,$p_id
         return $e;
     }
 }
-
+function join_book_genre_ctrl($id,$gen){
+    $book = new book_class();
+    return $book->join_book_genre_cls($id,$gen);
+}
 function insert_author_ctrl( $name){
     $book = new book_class();
     return $book->insert_author_cls($name);
@@ -77,20 +80,9 @@ function get_all_authors_ctrl(){
     return $book->get_all_authors_cls();
 }
 
-//filters list of books by the passed list of genre ids delimited by +
-function filter_books_by_genre_ctrl($list){
+function filter_books_by_genre_ctrl($genre){
     $book = new book_class();
-    $filter = "";
-    //
-    $genre_array = explode("+",$list);
-
-    //concatenate each genre filter query
-    foreach ($genre_array as $genre){
-        $filter = $filter ." OR `genre_name` = '$genre'";
-    }
-    //remove the leading or operator from query string
-    $filter = substr($filter,3);
-    return $book->filter_books_by_genre_cls($filter);
+    return $book->filter_books_by_genre_cls($genre);
 
 }
 
@@ -111,15 +103,20 @@ function select_all_draft_book_ctrl(){
     return $book->select_all_draft_book_cls();
 }
 
+function get_book_by_random_ctrl(){
+    $book = new book_class();
+    return $book->get_book_by_random_cls();
+}
+
 function select_all_deleted_book_ctrl(){
     $book = new book_class();
     return $book->select_all_deleted_book_cls();
 }
 
 
-function get_books_by_publisher_ctrl($id){
+function get_books_by_query_cls($id){
     $book = new book_class();
-    return $book->get_books_by_publisher_cls($id);
+    return $book->get_books_by_query_cls($id);
 }
 
 function get_author_name_by_id_ctrl($id){

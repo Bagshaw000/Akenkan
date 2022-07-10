@@ -64,11 +64,20 @@ require_once("../controllers/book_controller.php");
 
 					</div>
 					<!-- SEARCH BAR-->
-					<div class="search">
-						<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" placeholder="Search by title and author...">
+					<form class="search">
+						<?php
+							if (isset($_GET["search"])){
+								$q = $_GET["search"];
+								echo "<input type='text' name='search' value ='q' onfocus='this.value = '';' onblur='if (this.value == '') {this.value = '';}' placeholder='Search by title and author...'>";
+
+							}else {
+								echo "<input type='text' name='search' onfocus='this.value = '';' onblur='if (this.value == '') {this.value = '';}' placeholder='Search by title and author...'>";
+							}
+						?>
+
 						<input type="submit" value="SEARCH">
 
-					</div>
+	</form>
 					<div class="clearfix"> </div>
 				</div>
 
@@ -218,8 +227,18 @@ require_once("../controllers/book_controller.php");
 	</div>
 
 	<?php
-		$books = select_all_published_book_ctrl();
 
+	if (isset($_GET["genre"])) {
+		$books = filter_books_by_genre_ctrl($_GET["genre"]);
+	} else if (isset($_GET["search"])) {
+		// $genres = get_book_by_search_ctrl();
+		$books = get_books_by_query_cls($_GET["search"]);
+	} else {
+		$books = select_all_published_book_ctrl();
+	}
+	if (!$books) {
+		echo "No books match the filter given";
+	} else {
 		foreach ($books as $index => $item) {
 			$position = $index % 3;
 			$id = $item["book_id"];
@@ -229,7 +248,7 @@ require_once("../controllers/book_controller.php");
 			$status = $item["book_status"];
 			$image = $item["image_location"] ?? "images/1.jpg";
 
-			if ($position == 0){ // align left
+			if ($position == 0) { // align left
 
 				echo "<div class='col-md-4 chain-grid'>
 				<a href='single.php?id=$id'><img class='img-responsive chain' src='$image' alt=' ' /></a>
@@ -257,7 +276,7 @@ require_once("../controllers/book_controller.php");
 					</div>
 				</div>
 			</div>";
-			} else if ($position == 1){
+			} else if ($position == 1) {
 
 				echo "<div class='product-left'>
 				<div class='col-md-4 chain-grid'>
@@ -316,10 +335,9 @@ require_once("../controllers/book_controller.php");
 			</div>
 			<div class='clearfix'> </div>
 		</div>";
-
 			}
-
 		}
+	}
 	?>
 	<div class="clearfix"> </div>
 	</div>
@@ -329,24 +347,14 @@ require_once("../controllers/book_controller.php");
 		<div class=" top-nav rsidebar span_1_of_left">
 			<h3 class="cate">CATEGORIES</h3>
 			<ul class="menu">
-				<li class="item1"><a href="#">Drama </a>
-
-				</li>
-				<li class="item2"><a href="#">Adventure </a>
-
-				</li>
-				<li class="item3"><a href="#">Fantasy </a>
-
-				</li>
-				<li class="item4"><a href="#">Romance </a>
-
-				</li>
-				<li class="item5"><a href="#">Sci-Fi </a>
-
-				</li>
-				<li class="item6"><a href="#">Comedy </a>
-
-				</li>
+				<?php
+				$genres = get_all_genres_ctrl();
+				foreach ($genres as $index => $gen) {
+					$in = $index + 1;
+					$name = $gen["genre_name"];
+					echo "<li class='item$in'><a href='index.php?genre=$name'>$name </a></li>";
+				}
+				?>
 				<!-- <li>
 			<ul class="kid-menu">
 				<li><a href="product.php">Sci-Fi</a></li>

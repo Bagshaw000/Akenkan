@@ -28,6 +28,11 @@
 			return $this->db_fetch_all($sql);
 		}
 
+		function get_all_reviews_cls(){
+			$sql = "SELECT * FRMOOM `reviews`";
+			return $this->db_fetch_all($sql);
+		}
+
 		//--UPDATE--//
 
 		//--DELETE--//

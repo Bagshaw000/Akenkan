@@ -102,8 +102,17 @@ class book_class extends db_connection
     }
 
 
-    function get_books_by_publisher_cls($id){
-        $sql = "SELECT * FROM `books` WHERE `publisher_id`='$id'";
+    function get_books_by_query_cls($query){
+        $sql = "SELECT *
+        FROM books b
+        JOIN publisher p
+          ON b.publisher_id = p.publisher_id
+          WHERE b.title LIKE '%$query%' OR p.publisher_name LIKE '%$query%'";
+        return $this->db_fetch_all($sql);
+    }
+
+    function get_book_by_random_cls(){
+        $sql = "SELECT * FROM `books` ORDER BY RAND() LIMIT  4";
         return $this->db_fetch_all($sql);
     }
 
@@ -113,8 +122,12 @@ class book_class extends db_connection
     }
 
 
-    function filter_books_by_genre_cls($filters){
-        $sql = "SELECT * FROM `books` WHERE $filters";
+    function filter_books_by_genre_cls($genre){
+        $sql = "SELECT*
+        FROM books b
+        JOIN book_genres bg
+          ON bg.book_id = b.book_id
+          WHERE bg.genre_name = '$genre'";
         return $this->db_fetch_all($sql);
     }
 
