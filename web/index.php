@@ -220,8 +220,8 @@ require_once("../controllers/book_controller.php");
 	<?php
 		$books = select_all_published_book_ctrl();
 
-		foreach ($books as $item) {
-
+		foreach ($books as $index => $item) {
+			$position = $index % 3;
 			$id = $item["book_id"];
 			$title = $item["title"];
 			$author = get_author_name_by_id_ctrl($item["author_id"]);
@@ -229,103 +229,98 @@ require_once("../controllers/book_controller.php");
 			$status = $item["book_status"];
 			$image = $item["image_location"] ?? "images/1.jpg";
 
-			echo "<tr>";
-				echo "<td>
+			if ($position == 0){ // align left
 
-					<img src='$image' style='display:block'>
-					$id
-				</td>";
-				echo "<td>$title</td>";
-				echo "<td>$author</td>";
-				echo "<td>$price</td>";
-				echo "<td>$status</td>";
-			echo "</tr>";
+				echo "<div class='col-md-4 chain-grid'>
+				<a href='single.php?id=$id'><img class='img-responsive chain' src='$image' alt=' ' /></a>
+				<!-- <span class='star'> </span> -->
+				<div class='grid-chain-bottom'>
+					<h6><a href='single.php?id=$id'>$title</a></h6>
+					<div class='star-price'>
+						<div class='dolor-grid'>
+							<span class='actual'>GHS $price</span>
+							<span class='rating'>
+								<input type='radio' class='rating-input' id='rating-input-1-5' name='rating-input-1'>
+								<label for='rating-input-1-5' class='rating-star1'> </label>
+								<input type='radio' class='rating-input' id='rating-input-1-4' name='rating-input-1'>
+								<label for='rating-input-1-4' class='rating-star1'> </label>
+								<input type='radio' class='rating-input' id='rating-input-1-3' name='rating-input-1'>
+								<label for='rating-input-1-3' class='rating-star'> </label>
+								<input type='radio' class='rating-input' id='rating-input-1-2' name='rating-input-1'>
+								<label for='rating-input-1-2' class='rating-star'> </label>
+								<input type='radio' class='rating-input' id='rating-input-1-1' name='rating-input-1'>
+								<label for='rating-input-1-1' class='rating-star'> </label>
+							</span>
+						</div>
+						<a class='now-get get-cart' href='#'>ADD TO CART</a>
+						<div class='clearfix'> </div>
+					</div>
+				</div>
+			</div>";
+			} else if ($position == 1){
+
+				echo "<div class='product-left'>
+				<div class='col-md-4 chain-grid'>
+					<a href='single.php?id=$id'><img class='img-responsive chain' src='$image' alt=' ' /></a>
+					<!-- <span class='star'> </span> -->
+					<div class='grid-chain-bottom'>
+						<h6><a href='single.php?id=$id'>$title</a></h6>
+						<div class='star-price'>
+							<div class='dolor-grid'>
+								<span class='actual'>GHS $price</span>
+								<span class='rating'>
+									<input type='radio' class='rating-input' id='rating-input-1-5' name='rating-input-1'>
+									<label for='rating-input-1-5' class='rating-star1'> </label>
+									<input type='radio' class='rating-input' id='rating-input-1-4' name='rating-input-1'>
+									<label for='rating-input-1-4' class='rating-star1'> </label>
+									<input type='radio' class='rating-input' id='rating-input-1-3' name='rating-input-1'>
+									<label for='rating-input-1-3' class='rating-star'> </label>
+									<input type='radio' class='rating-input' id='rating-input-1-2' name='rating-input-1'>
+									<label for='rating-input-1-2' class='rating-star'> </label>
+									<input type='radio' class='rating-input' id='rating-input-1-1' name='rating-input-1'>
+									<label for='rating-input-1-1' class='rating-star'> </label>
+								</span>
+							</div>
+							<a class='now-get get-cart' href='#'>ADD TO CART</a>
+							<div class='clearfix'> </div>
+						</div>
+					</div>
+				</div>
+				";
+			} else {
+				echo "<div class='col-md-4 chain-grid grid-top-chain'>
+				<a href='single.php?id=$id'><img class='img-responsive chain' src='$image' alt=' ' /></a>
+				<!-- <span class='star'> </span> -->
+				<div class='grid-chain-bottom'>
+					<h6><a href='single.php?id=$id'>$title</a></h6>
+					<div class='star-price'>
+						<div class='dolor-grid'>
+							<span class='actual'>GHS $price</span>
+							<span class='rating'>
+								<input type='radio' class='rating-input' id='rating-input-1-5' name='rating-input-1'>
+								<label for='rating-input-1-5' class='rating-star1'> </label>
+								<input type='radio' class='rating-input' id='rating-input-1-4' name='rating-input-1'>
+								<label for='rating-input-1-4' class='rating-star1'> </label>
+								<input type='radio' class='rating-input' id='rating-input-1-3' name='rating-input-1'>
+								<label for='rating-input-1-3' class='rating-star'> </label>
+								<input type='radio' class='rating-input' id='rating-input-1-2' name='rating-input-1'>
+								<label for='rating-input-1-2' class='rating-star'> </label>
+								<input type='radio' class='rating-input' id='rating-input-1-1' name='rating-input-1'>
+								<label for='rating-input-1-1' class='rating-star'> </label>
+							</span>
+						</div>
+						<a class='now-get get-cart' href='#'>ADD TO CART</a>
+						<div class='clearfix'> </div>
+					</div>
+				</div>
+			</div>
+			<div class='clearfix'> </div>
+		</div>";
+
+			}
+
 		}
 	?>
-	<div class="product-left">
-		<div class="col-md-4 chain-grid">
-			<a href="single.php"><img class="img-responsive chain" src="images/48.jpg" alt=" " /></a>
-			<!-- <span class="star"> </span> -->
-			<div class="grid-chain-bottom">
-				<h6><a href="single.php">Title of book</a></h6>
-				<div class="star-price">
-					<div class="dolor-grid">
-						<span class="actual">GHS 300</span>
-						<!-- <span class="reducedfrom">400$</span>  -->
-						<span class="rating">
-							<input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
-							<label for="rating-input-1-5" class="rating-star1"> </label>
-							<input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
-							<label for="rating-input-1-4" class="rating-star1"> </label>
-							<input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
-							<label for="rating-input-1-3" class="rating-star"> </label>
-							<input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
-							<label for="rating-input-1-2" class="rating-star"> </label>
-							<input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
-							<label for="rating-input-1-1" class="rating-star"> </label>
-						</span>
-					</div>
-					<a class="now-get get-cart" href="#">ADD TO CART</a>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4 chain-grid">
-			<a href="single.php"><img class="img-responsive chain" src="images/ba.jpg" alt=" " /></a>
-			<!-- <span class="star"> </span> -->
-			<div class="grid-chain-bottom">
-				<h6><a href="single.php">Enter book title</a></h6>
-				<div class="star-price">
-					<div class="dolor-grid">
-						<span class="actual">GHS 300</span>
-						<!--  <span class="reducedfrom">400$</span>  -->
-						<span class="rating">
-							<input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
-							<label for="rating-input-1-5" class="rating-star1"> </label>
-							<input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
-							<label for="rating-input-1-4" class="rating-star1"> </label>
-							<input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
-							<label for="rating-input-1-3" class="rating-star"> </label>
-							<input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
-							<label for="rating-input-1-2" class="rating-star"> </label>
-							<input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
-							<label for="rating-input-1-1" class="rating-star"> </label>
-						</span>
-					</div>
-					<a class="now-get get-cart" href="#">ADD TO CART</a>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4 chain-grid grid-top-chain">
-			<a href="single.php"><img class="img-responsive chain" src="images/bo.jpg" alt=" " /></a>
-			<!-- <span class="star"> </span> -->
-			<div class="grid-chain-bottom">
-				<h6><a href="single.php">Title of book</a></h6>
-				<div class="star-price">
-					<div class="dolor-grid">
-						<span class="actual">GHS 300</span>
-						<!--  <span class="reducedfrom">400$</span>  -->
-						<span class="rating">
-							<input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
-							<label for="rating-input-1-5" class="rating-star1"> </label>
-							<input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
-							<label for="rating-input-1-4" class="rating-star1"> </label>
-							<input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
-							<label for="rating-input-1-3" class="rating-star"> </label>
-							<input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
-							<label for="rating-input-1-2" class="rating-star"> </label>
-							<input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
-							<label for="rating-input-1-1" class="rating-star"> </label>
-						</span>
-					</div>
-					<a class="now-get get-cart" href="#">ADD TO CART</a>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-		</div>
-		<div class="clearfix"> </div>
-	</div>
 	<div class="clearfix"> </div>
 	</div>
 
