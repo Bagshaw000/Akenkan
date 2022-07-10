@@ -59,7 +59,7 @@ class cart_class extends db_connection{
 
 
 	function create_order_from_cart_item_cls($order_id, $transaction_id,$date,$user_id){
-		 	 	 	billing_address 	amount
+		 	 	 	// billing_address 	amount
 		$sql="INSERT INTO `orders` (`order_id`,`transaction_id`,`user_id`,`order_date`) VALUES ('$order_id','$transaction_id','$user_id','$date')";
 		return $this->db_query($sql);
 	}

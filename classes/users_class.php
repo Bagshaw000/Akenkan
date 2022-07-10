@@ -1,6 +1,6 @@
 <?php
 //connect to database class
-require("../settings/db_class.php");
+require_once("../settings/db_class.php");
 
 /**
 *General class to handle all functions
@@ -18,7 +18,7 @@ class user_class extends db_connection
     //Signs up a user as a buyer
     function create_user_cls($email,$password,$name){
         $sql = "INSERT INTO users (`email`, `password`, `display_name`)
-        VALUES ('$email','$password','$name','user')";
+        VALUES ('$email','$password','$name')";
         return $this->db_query($sql);
     }
 
@@ -30,6 +30,20 @@ class user_class extends db_connection
         return $this->db_fetch_one($sql);
     }
 
+    function get_user_name_by_id_cls($id){
+        $sql = "SELECT `display_name` FROM `users` WHERE `user_id`='$id'";
+        return $this->db_fetch_one($sql);
+    }
+
+    function get_user_count_cls(){
+        $sql = "SELECT * FROM `users`";
+        return $this->db_count($sql);
+    }
+
+    function sign_in_user_cls($email, $password){
+        $sql = "SELECT * FROM `users` WHERE `email` = '$email' AND `password`='$password'";
+        return $this->db_fetch_one($sql);
+    }
 
 
 

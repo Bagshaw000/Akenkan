@@ -6,6 +6,10 @@
 		return $review->insert_review_cls($user_id, $book_id, $rating, $comment);
 	}
 
+	function get_all_reviews_ctrl(){
+		$review = new review_class();
+		return $review->get_all_reviews_cls();
+	}
 
 
 	//--SELECT--//

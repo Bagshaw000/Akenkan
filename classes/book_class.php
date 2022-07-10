@@ -1,6 +1,6 @@
 <?php
 //connect to database class
-require("../settings/db_class.php");
+require_once("../settings/db_class.php");
 
 /**
 *General class to handle all functions
@@ -18,9 +18,9 @@ class book_class extends db_connection
      * This function insert the book details in the database
      * @return bool
      */
-    function insert_book_cls($book_id,$title,$desc,$p_date,$date_added,$p_id, $author){
-        $sql = "INSERT INTO `books`(`book_id`, `title`, `description`, `publish_date`, `date_added`, `publisher_id`, `author_id`)
-         VALUES ('$book_id','$title','$desc','$p_date','$date_added','$p_id', '$author')";
+    function insert_book_cls($book_id,$title,$desc,$p_date,$date_added,$p_id, $author, $status, $price){
+        $sql = "INSERT INTO `books`(`book_id`, `title`, `description`, `publish_date`, `date_added`, `publisher_id`, `author_id`, `book_status`, `price`)
+         VALUES ('$book_id','$title','$desc','$p_date','$date_added','$p_id', '$author', '$status', '$price')";
 
          return $this->db_query($sql);
     }
@@ -32,18 +32,18 @@ class book_class extends db_connection
     }
 
 
-    function insert_author_cls($id, $name){
-        $sql = "INSERT INTO `author` (`author_id`,`author_name`) VALUES ( '$id','$name')";
+    function insert_author_cls( $name){
+        $sql = "INSERT INTO `author` (`author_name`) VALUES ( '$name')";
         return $this->db_query($sql);
     }
 
-    function insert_publisher_cls($id, $name){
-        $sql = "INSERT INTO `publisher` (`publisher_id`,`publisher_name`) VALUES ( '$id','$name')";
+    function insert_publisher_cls($name){
+        $sql = "INSERT INTO `publisher` (`publisher_name`) VALUES ( '$name')";
         return $this->db_query($sql);
     }
 
     function insert_genre_cls( $name){
-        $sql = "INSERT INTO `genre` (`genre_name`) VALUES ( '$name')";
+        $sql = "INSERT INTO `genres` (`genre_name`) VALUES ( '$name')";
         return $this->db_query($sql);
     }
 
@@ -63,7 +63,7 @@ class book_class extends db_connection
 
 
     function get_all_genres_cls(){
-        $sql = "SELECT * FROM `genre`";
+        $sql = "SELECT * FROM `genres`";
         return $this->db_fetch_all($sql);
     }
 
@@ -102,14 +102,32 @@ class book_class extends db_connection
     }
 
 
-    function get_books_by_publisher_cls($id){
-        $sql = "SELECT * FROM `books` WHERE `publisher_id`='$id'";
+    function get_books_by_query_cls($query){
+        $sql = "SELECT *
+        FROM books b
+        JOIN publisher p
+          ON b.publisher_id = p.publisher_id
+          WHERE b.title LIKE '%$query%' OR p.publisher_name LIKE '%$query%'";
         return $this->db_fetch_all($sql);
     }
 
+    function get_book_by_random_cls(){
+        $sql = "SELECT * FROM `books` ORDER BY RAND() LIMIT  4";
+        return $this->db_fetch_all($sql);
+    }
 
-    function filter_books_by_genre_cls($filters){
-        $sql = "SELECT * FROM `books` WHERE $filters";
+    function get_author_name_by_id_cls($id){
+        $sql = "SELECT `author_name` FROM `author` WHERE `author_id`='$id'";
+        return $this->db_fetch_one($sql);
+    }
+
+
+    function filter_books_by_genre_cls($genre){
+        $sql = "SELECT*
+        FROM books b
+        JOIN book_genres bg
+          ON bg.book_id = b.book_id
+          WHERE bg.genre_name = '$genre'";
         return $this->db_fetch_all($sql);
     }
 
@@ -132,7 +150,7 @@ class book_class extends db_connection
      * This function update the status of books with the passed id
      * @return bool
      */
-    function change_book_status($book_id,$status){
+    function update_book_status_cls($book_id,$status){
         $sql = "UPDATE `books` SET `book_status`='$status' WHERE `book_id`='$book_id'";
         return $this->db_query($sql);
     }

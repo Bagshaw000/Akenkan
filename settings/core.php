@@ -12,6 +12,17 @@ function sign_in_session_user($id, $role){
 	$_SESSION["user_id"] = $id;
 }
 
+
+//Returns a boolean to represent the user sign in status
+function is_user_signed_in(){
+	return isset($_SESSION["role"]) && isset($_SESSION["user_id"]);
+}
+
+//Returns the user's ip address
+function get_user_ip(){
+	return $_SERVER["REMOTE_ADDR"];
+}
+
 //Signs out the user from sesson
 function sign_out_session(){
 	unset($_SESSION["role"]);

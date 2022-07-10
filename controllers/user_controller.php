@@ -1,7 +1,7 @@
 <?php
 //connect to the user account class
-include("../classes/users_class.php");
-include("../functions/function_store.php");
+require_once("../classes/users_class.php");
+require_once("../functions/function_store.php");
 
 //sanitize data
 
@@ -15,9 +15,9 @@ include("../functions/function_store.php");
  */
 function insert_user_ctr($email, $password, $name,$role){
     $data = new user_class();
-    $hashed_pas= hash_pass($password);
+    $hashed_pas= md5($password);
 
-    return $data->create_user_cls(cleanText($email), cleanText($hashed_pas), cleanText($name));
+    return $data->create_user_cls(cleanText($email), $hashed_pas, cleanText($name));
 }
 
 //--SELECT--//
@@ -44,15 +44,8 @@ function select_user_ctr($email){
 //information if successful and false otherwise
 function sign_in_user_ctrl($email, $password) {
     $user = new user_class();
-    $data =  $user->get_user_by_id_cls($email); // get user's hashed password
-    // header("Location: ../");
-    // return $hash_pass;
-    return false;
-    if (verify_pass($data["password"], $password)){// if password matches, return user info
-        return $data;
-    } else { // if passwords don't matc return false
-        return false;
-    }
+    return $user->sign_in_user_cls($email, md5($password));
+
 }
 
 //--UPDATE--//
@@ -75,6 +68,16 @@ function delete_user_account_ctrl($id){
 function activate_user_account_ctrl($id){
     $user = new user_class();
     return $user->change_account_status($id, "active");
+}
+
+function get_user_count_ctrl(){
+    $user = new user_class();
+    return $user->get_user_count_cls();
+}
+
+function get_user_name_by_id_ctrl($id){
+    $user = new user_class();
+    return $user->get_user_name_by_id_cls($id)["display_name"];
 }
 
 //--DELETE--//

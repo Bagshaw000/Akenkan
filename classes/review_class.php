@@ -1,5 +1,5 @@
 <?php
-	require("../settings/db_class.php");
+	require_once("../settings/db_class.php");
 
 	/**
 	*General class to handle all functions
@@ -25,6 +25,11 @@
 		//--SELECT--//
 		function get_reviews_by_book_id_cls($id){
 			$sql = "SELECT * FROM `reviews` WHERE `book_id` = '$id'";
+			return $this->db_fetch_all($sql);
+		}
+
+		function get_all_reviews_cls(){
+			$sql = "SELECT * FRMOOM `reviews`";
 			return $this->db_fetch_all($sql);
 		}
 

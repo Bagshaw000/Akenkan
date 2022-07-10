@@ -15,43 +15,28 @@ require_once("../functions/function_store.php");
  * @return error
  */
 
-function insert_book_ctr($book_id,$title,$desc,$p_date,$date_added,$author,$p_id)
+function insert_book_ctr($book_id,$title,$desc,$p_date,$date_added,$author,$p_id,$status, $price)
 {
     try{
         $data = new book_class();
-        return $data->insert_book_cls($book_id,cleanText ($title),cleanText($desc),cleanText($p_date),cleanText($date_added),cleanText($p_id),cleanText($author));
+        return $data->insert_book_cls($book_id,cleanText ($title),cleanText($desc),cleanText($p_date),cleanText($date_added),cleanText($p_id),cleanText($author), $status, $price);
     }
     catch(exception $e){
         return $e;
     }
 }
-
-
-function get_all_genres_ctrl(){
+function join_book_genre_ctrl($id,$gen){
     $book = new book_class();
-    return $book->get_all_genres_cls();
+    return $book->join_book_genre_cls($id,$gen);
+}
+function insert_author_ctrl( $name){
+    $book = new book_class();
+    return $book->insert_author_cls($name);
 }
 
-
-function get_all_authors_ctrl(){
+function insert_publisher_ctrl( $name){
     $book = new book_class();
-    return $book->get_all_authors_cls();
-}
-
-
-function get_all_publishers_ctrl(){
-    $book = new book_class();
-    return $book->get_all_publishers_cls();
-}
-
-function insert_author_ctrl($id, $name){
-    $book = new book_class();
-    return $book->insert_author_cls($id,$name);
-}
-
-function insert_publisher_ctrl($id, $name){
-    $book = new book_class();
-    return $book->insert_publisher_cls($id,$name);
+    return $book->insert_publisher_cls($name);
 }
 
 function insert_genre_ctrl($name){
@@ -77,20 +62,27 @@ function select_all_book_ctr(){
     }
 }
 
-//filters list of books by the passed list of genre ids delimited by +
-function filter_books_by_genre_ctrl($list){
+function get_all_publishers_ctrl(){
     $book = new book_class();
-    $filter = "";
-    //
-    $genre_array = explode("+",$list);
+    return $book->get_all_publishers_cls();
+}
 
-    //concatenate each genre filter query
-    foreach ($genre_array as $genre){
-        $filter = $filter ." OR `genre_name` = '$genre'";
-    }
-    //remove the leading or operator from query string
-    $filter = substr($filter,3);
-    return $book->filter_books_by_genre_cls($filter);
+
+
+function get_all_genres_ctrl(){
+    $book = new book_class();
+    return $book->get_all_genres_cls();
+}
+
+
+function get_all_authors_ctrl(){
+    $book = new book_class();
+    return $book->get_all_authors_cls();
+}
+
+function filter_books_by_genre_ctrl($genre){
+    $book = new book_class();
+    return $book->filter_books_by_genre_cls($genre);
 
 }
 
@@ -111,15 +103,25 @@ function select_all_draft_book_ctrl(){
     return $book->select_all_draft_book_cls();
 }
 
+function get_book_by_random_ctrl(){
+    $book = new book_class();
+    return $book->get_book_by_random_cls();
+}
+
 function select_all_deleted_book_ctrl(){
     $book = new book_class();
     return $book->select_all_deleted_book_cls();
 }
 
 
-function get_books_by_publisher_ctrl($id){
+function get_books_by_query_cls($id){
     $book = new book_class();
-    return $book->get_books_by_publisher_cls($id);
+    return $book->get_books_by_query_cls($id);
+}
+
+function get_author_name_by_id_ctrl($id){
+    $book = new book_class();
+    return $book->get_author_name_by_id_cls($id)["author_name"];
 }
 
 //--UPDATE--//
@@ -141,6 +143,11 @@ function update_book_ctr($book_id,$title,$desc,$p_date,$date_added,$b_perm,$p_id
         }
 }
 
+function update_book_status_ctrl($id, $status){
+    $book = new book_class();
+    return $book->update_book_status_cls($id,$status);
+}
+
 //--DELETE--//
 /**
  * This function take the data to be deleted and updates the permission
@@ -152,7 +159,7 @@ function update_book_ctr($book_id,$title,$desc,$p_date,$date_added,$b_perm,$p_id
 function delete_book_ctr($id){
     try{
         $book = new book_class();
-        return $book->change_book_status($id,"deleted");
+        return $book->update_book_status_cls($id,"deleted");
     }catch(exception $e){
         return $e;
     }
@@ -161,7 +168,7 @@ function delete_book_ctr($id){
 
 function publish_book_ctrl($id){
     $book = new book_class();
-    return $book->change_book_status($id,"published");
+    return $book->update_book_status_cls($id,"published");
 }
 
 ?>
