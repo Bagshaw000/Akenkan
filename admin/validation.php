@@ -67,7 +67,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <h1><a class="navbar-brand" href="index.php"><span class="fa fa-area-chart"></span> Glance<span class="dashboard_text">Design dashboard</span></a></h1>
+            <h1><a class="navbar-brand" href="index.php"><span class="fa fa-area-chart"></span> Akenkan<span class="dashboard_text">Design dashboard</span></a></h1>
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="sidebar-menu">
@@ -88,32 +88,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <li><a href="media.php"><i class="fa fa-angle-right"></i> Add book</a></li>
                 </ul>
               </li>
-              <li class="treeview">
-                <a href="charts.php">
-                <i class="fa fa-pie-chart"></i>
-                <span>Charts</span>
-                <span class="label label-primary pull-right">new</span>
-                </a>
-              </li>
-              <li class="treeview">
-                <a href="#">
-                <i class="fa fa-laptop"></i>
-                <span>UI Elements</span>
-                <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="general.php"><i class="fa fa-angle-right"></i> General</a></li>
-                  <li><a href="icons.php"><i class="fa fa-angle-right"></i> Icons</a></li>
-                  <li><a href="buttons.php"><i class="fa fa-angle-right"></i> Buttons</a></li>
-                  <li><a href="typography.php"><i class="fa fa-angle-right"></i> Typography</a></li>
-                </ul>
-              </li>
-			  <li>
-                <a href="widgets.php">
-                <i class="fa fa-th"></i> <span>Widgets</span>
-                <small class="label pull-right label-info">08</small>
-                </a>
-              </li>
+              
+			  
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-edit"></i> <span>Purchase</span>
@@ -124,15 +100,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <li><a href="validation.php"><i class="fa fa-angle-right"></i> Transactions</a></li>
                 </ul>
               </li>
-              <li class="treeview">
-                <a href="#">
-                <i class="fa fa-table"></i> <span>Tables</span>
-                <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="tables.php"><i class="fa fa-angle-right"></i> Simple tables</a></li>
-                </ul>
-              </li>
+             
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-envelope"></i> <span>Feedback</span>
@@ -142,23 +110,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <li><a href="compose.php"><i class="fa fa-angle-right"></i> Issues </a></li>
                 </ul>
               </li>
-              <li class="treeview">
-                <a href="#">
-                <i class="fa fa-folder"></i> <span>Examples</span>
-                <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="login.php"><i class="fa fa-angle-right"></i> Login</a></li>
-                  <li><a href="signup.php"><i class="fa fa-angle-right"></i> Register</a></li>
-                  <li><a href="404.php"><i class="fa fa-angle-right"></i> 404 Error</a></li>
-                  <li><a href="500.php"><i class="fa fa-angle-right"></i> 500 Error</a></li>
-                  <li><a href="blank-page.php"><i class="fa fa-angle-right"></i> Blank Page</a></li>
-                </ul>
-              </li>
-              <li class="header">LABELS</li>
-              <li><a href="#"><i class="fa fa-angle-right text-red"></i> <span>Important</span></a></li>
-              <li><a href="#"><i class="fa fa-angle-right text-yellow"></i> <span>Warning</span></a></li>
-              <li><a href="#"><i class="fa fa-angle-right text-aqua"></i> <span>Information</span></a></li>
+            
             </ul>
           </div>
           <!-- /.navbar-collapse -->
@@ -215,96 +167,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								</li>
 							</ul>
 						</li>
-						<li class="dropdown head-dpdn">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">4</span></a>
-							<ul class="dropdown-menu">
-								<li>
-									<div class="notification_header">
-										<h3>You have 3 new notification</h3>
-									</div>
-								</li>
-								<li><a href="#">
-									<div class="user_img"><img src="images/4.jpg" alt=""></div>
-								   <div class="notification_desc">
-									<p>Lorem ipsum dolor amet</p>
-									<p><span>1 hour ago</span></p>
-									</div>
-								  <div class="clearfix"></div>
-								 </a></li>
-								 <li class="odd"><a href="#">
-									<div class="user_img"><img src="images/1.jpg" alt=""></div>
-								   <div class="notification_desc">
-									<p>Lorem ipsum dolor amet </p>
-									<p><span>1 hour ago</span></p>
-									</div>
-								   <div class="clearfix"></div>
-								 </a></li>
-								 <li><a href="#">
-									<div class="user_img"><img src="images/3.jpg" alt=""></div>
-								   <div class="notification_desc">
-									<p>Lorem ipsum dolor amet </p>
-									<p><span>1 hour ago</span></p>
-									</div>
-								   <div class="clearfix"></div>
-								 </a></li>
-								 <li>
-									<div class="notification_bottom">
-										<a href="#">See all notifications</a>
-									</div>
-								</li>
-							</ul>
-						</li>
-						<li class="dropdown head-dpdn">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-tasks"></i><span class="badge blue1">8</span></a>
-							<ul class="dropdown-menu">
-								<li>
-									<div class="notification_header">
-										<h3>You have 8 pending task</h3>
-									</div>
-								</li>
-								<li><a href="#">
-									<div class="task-info">
-										<span class="task-desc">Database update</span><span class="percentage">40%</span>
-										<div class="clearfix"></div>
-									</div>
-									<div class="progress progress-striped active">
-										<div class="bar yellow" style="width:40%;"></div>
-									</div>
-								</a></li>
-								<li><a href="#">
-									<div class="task-info">
-										<span class="task-desc">Dashboard done</span><span class="percentage">90%</span>
-									   <div class="clearfix"></div>
-									</div>
-									<div class="progress progress-striped active">
-										 <div class="bar green" style="width:90%;"></div>
-									</div>
-								</a></li>
-								<li><a href="#">
-									<div class="task-info">
-										<span class="task-desc">Mobile App</span><span class="percentage">33%</span>
-										<div class="clearfix"></div>
-									</div>
-								   <div class="progress progress-striped active">
-										 <div class="bar red" style="width: 33%;"></div>
-									</div>
-								</a></li>
-								<li><a href="#">
-									<div class="task-info">
-										<span class="task-desc">Issues fixed</span><span class="percentage">80%</span>
-									   <div class="clearfix"></div>
-									</div>
-									<div class="progress progress-striped active">
-										 <div class="bar  blue" style="width: 80%;"></div>
-									</div>
-								</a></li>
-								<li>
-									<div class="notification_bottom">
-										<a href="#">See all pending tasks</a>
-									</div>
-								</li>
-							</ul>
-						</li>
+							
+							
 					</ul>
 					<div class="clearfix"> </div>
 				</div>
@@ -364,9 +228,13 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 			<div class="main-page">
 				<div class="forms validation">
 					<h2 class="title1">Validation Forms :</h2>
+					
 					<div class="form-three widget-shadow">
-						<div data-example-id="form-validation-states">
-
+						<div class="form-title">
+								<h4>Transactions</h4>
+							</div>
+						<div data-example-id="form-validation-states"> 
+							 
 						</div>
 					</div>
 				</div>
