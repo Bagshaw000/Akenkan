@@ -291,7 +291,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 							</select>
 							<div class="mb-3">
 								<label for="formFile" class="form-label">Book image</label>
-								<input class="form-control" type="file" id="image">
+								<input class="form-control" type="file" accept="image/*" id="image">
 							</div>
 
 							<div id="b-drop">

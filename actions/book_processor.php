@@ -1,9 +1,26 @@
 <?php
 	require_once("../controllers/book_controller.php");
 
+	print_r( $_FILES);
 
-	if(!isset($_POST["action"])){
-		echo "Missing action paramter";
+	if(isset($_FILES)){
+		print_r( $_FILES);
+		$image = $_FILES["tmp_name"];
+		$path = "../images/uploads/";
+		$destination = $path.$image['name'];
+
+		//creating the directory if it does not exist
+		if (!file_exists($path)) {
+			 mkdir($path, 0777, true);
+		}
+		//move uploaded image to destination
+		$success = copy($image['tmp_name'], $destination);
+
+		if (!$success){
+			echo "upload failed";
+		}
+		echo $destination;
+	echo "upload";
 	} else if ($_POST["action"]=="add_author"){
 		$name = $_POST["name"];
 
