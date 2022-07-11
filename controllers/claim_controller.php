@@ -53,7 +53,7 @@
 	//Marks a claim has adddressed(closed)
 	function close_claim_ctrl($id){
 		$claim = new claim_class();
-		return $claim->change_claim_status_cls($id,"opened");
+		return $claim->change_claim_status_cls($id,"closed");
 	}
 
 ?>

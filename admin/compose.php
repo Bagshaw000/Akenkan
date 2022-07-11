@@ -261,7 +261,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 									</tr>
 								</thead>
 								<tbody>
-									<script src="../js/"></script>
+									<script src="../js/claim.js"></script>
 									<?php
 									$claims = get_all_claims_ctrl();
 									if ($claims) {
@@ -277,11 +277,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 											echo "<td>$user</td>\n";
 											echo "<td>$claim_id</td>\n";
 											echo "<td>$message</td>\n";
-											echo "<td>$status</td>\n";
 
 											echo "<td>\n
-												<select class='form-select' aria-label='Default select example' id='status_$id' onchange='return onStatusChange(this.id,this.value)'>\n";
-													$states = array("closed", "open");
+												<select class='form-select'id='status_$claim_id' onchange='return onClaimChange(this.id,this.value)'>\n";
+													$states = array("closed", "opened");
 													foreach ($states as $current) {
 														if ($current == $status) {
 															echo "<option value='$current' selected>$current</option>\n";
