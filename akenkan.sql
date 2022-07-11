@@ -1,4 +1,4 @@
-drop database akenkan;
+-- drop database akenkan;
 create database akenkan;
 use akenkan;
 
