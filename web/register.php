@@ -30,14 +30,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="top-header">
 			<div class="container">
 				<div class="top-header-left">
-					<!-- <ul class="support">
-						<li><a href="#"><label> </label></a></li>
-						<li><a href="#">24x7 live<span class="live"> support</span></a></li>
-					</ul> -->
-					<!-- <ul class="support">
-						<li class="van"><a href="#"><label> </label></a></li>
-						<li><a href="#">Free shipping <span class="live"></span></a></li>
-					</ul> -->
 					<div class="clearfix"> </div>
 				</div>
 				<div class="top-header-right">
@@ -45,23 +37,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<li class="van"><a href="#"><label> </label></a></li>
 						<li><a href="#">Free shipping <span class="live"></span></a></li>
 					</ul>
-				 <!-- <div class="down-top">
-						  <select class="in-drop">
-							  <option value="English" class="in-of">English</option>
-							  <option value="Japanese" class="in-of">Japanese</option>
-							  <option value="French" class="in-of">French</option>
-							  <option value="German" class="in-of">German</option>
-							</select>
-					 </div> -->
-					<!-- <div class="down-top top-down">
-						  <select class="in-drop">
-
-						  <option value="Dollar" class="in-of">Dollar</option>
-						  <option value="Yen" class="in-of">Yen</option>
-						  <option value="Euro" class="in-of">Euro</option>
-							</select>
-					 </div> -->
-					 <!---->
 					<div class="clearfix"> </div>
 				</div>
 				<div class="clearfix"> </div>
@@ -123,15 +98,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>I agree to the terms and conditions</label>
 					   </a>
 					 </div>
-				  <!--    <div class="  register-bottom-grid">
-						    <h3>LOGIN INFORMATION</h3>
-							<div class="mation">
-								<span>Password<label>*</label></span>
-								<input type="text">
-								<span>Confirm Password<label>*</label></span>
-								<input type="text">
-							</div>
-					 </div> -->
 				</form>
 				<div class="clearfix"> </div>
 				<div class="register-but">
@@ -164,60 +130,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<li class="item6"><a href="#">Comedy </a>
 
 					</li>
-			<!-- <li>
-		<ul class="kid-menu">
-			<li><a href="product.php">Sci-Fi</a></li>
-			<li ><a href="product.php">Comedy</a></li>
-
-		</ul>
-	</li> -->
 
 </ul>
 				</div>
-			<!--initiate accordion-->
-	<!-- <script type="text/javascript">
-		$(function() {
-			var menu_ul = $('.menu > li > ul'),
-				   menu_a  = $('.menu > li > a');
-			menu_ul.hide();
-			menu_a.click(function(e) {
-				e.preventDefault();
-				if(!$(this).hasClass('active')) {
-					menu_a.removeClass('active');
-					menu_ul.filter(':visible').slideUp('normal');
-					$(this).addClass('active').next().stop(true,true).slideDown('normal');
-				} else {
-					$(this).removeClass('active');
-					$(this).next().stop(true,true).slideUp('normal');
-				}
-			});
 
-		});
-	</script> -->
-				<!-- <div class=" chain-grid menu-chain">
-						<a href="single.php"><img class="img-responsive chain" src="images/wat.jpg" alt=" " /></a>
-						<div class="grid-chain-bottom chain-watch">
-							<span class="actual dolor-left-grid">300$</span>
-							<span class="reducedfrom">500$</span>
-							<h6>Lorem ipsum dolor</h6>
-						</div>
-					</div>
-					 <a class="view-all all-product" href="product.php">VIEW ALL PRODUCTS<span> </span></a>
-		</div> -->
 		  <div class="clearfix"> </div>
 	   </div>
 	<!---->
 	<div class="footer">
 		<div class="footer-top">
-			<!-- <div class="container"> -->
-				<!-- <div class="latter"> -->
-					<!-- <h6>NEWS-LETTER</h6> -->
-					<!-- <div class="sub-left-right">
-						<form>
-							<input type="text" value="Enter email here"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter email here';}" />
-							<input type="submit" value="SUBSCRIBE" />
-						</form> -->
-					<!-- </div> -->
 					<div class="clearfix"> </div>
 
 		</div>

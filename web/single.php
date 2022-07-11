@@ -110,7 +110,7 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 				<div class="header-bottom-right">
 
 					<script src="../js/auth.js"></script>
-					
+
 					<?php
 					echo "<ul class='login'>";
 					if (is_user_signed_in()) { //show log out and username if signed in
@@ -126,9 +126,9 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 
 					// echo get_cart_by_ip_ctrl(get_user_ip());
 					if (is_user_signed_in()) {
-						$cart_count = get_cart_by_customer_ctrl(get_session_user_id());
+						$cart_count = count_cart_by_customer_ctrl(get_session_user_id());
 					} else {
-						$cart_count = get_cart_by_ip_ctrl(get_user_ip());
+						$cart_count =   0;
 					}
 					echo "<div class='cart'><a href='cart.php'><span> </span>CART ($cart_count)</a></div>";
 
@@ -175,7 +175,7 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 					<h3><?php echo $title; ?></h3>
 					<div class="cart-b">
 						<div class="left-n ">GHS <?php echo $price; ?></div>
-						<a class="now-get get-cart-in"  onclick="addCart('<?php  echo ($_SESSION['user_id']) ?>','<?php echo (get_user_ip())?>', '<?php echo ($id) ?>','<?php echo 1 ?> ')">ADD TO CART</a>
+						<a class="now-get get-cart-in"  onclick="addCart('<?php  echo (get_session_user_id()) ?>','<?php echo (get_user_ip())?>', '<?php echo ($id) ?>','<?php echo 1 ?> ')">ADD TO CART</a>
 						<div class="clearfix"></div>
 					</div>
 					<script src="../js/cart.js"></script>
