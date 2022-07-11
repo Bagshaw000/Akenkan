@@ -1,5 +1,5 @@
 <?php
-	require_once("../controllers//book_controller.php");
+	require_once("../controllers/book_controller.php");
 
 
 	if(!isset($_POST["action"])){
@@ -51,6 +51,31 @@
 		} else {
 			echo "Couldn't add Book. It might already exist";
 		}
+	} else if ($_POST["action"]=='get_genre'){
+		// print_r (get_book_genre_ctrl($_POST["id"]));
+		echo json_encode(get_book_genre_ctrl($_POST["id"]));
+
+	} else if ($_POST["action"]=="update_book"){
+		$id = $_POST["id"];
+		$name = $_POST["title"];
+		$price = $_POST["price"];
+		$description = $_POST["description"];
+		$publish_date = $_POST["publish_date"];
+		$status = $_POST["status"];
+		$author = $_POST["author"];
+		$genre = $_POST["genre"];
+		$publisher = $_POST["publisher"];
+		// $date = date('Y-m-d');
+		$image = null;
+
+		$success = update_book_ctrl($id, $name,$description, $publish_date,$status,$price, $publisher);
+		echo $success;
+		// join_book_genre_ctrl($id,$genre);
+		if ($success){
+			echo "Updated Book: $name";
+		} else {
+			echo "Couldn't update Book. Try again";
+		}
 	} else if ($_POST["action"]=="update_status"){
 		$id = explode("_",$_POST["id"])[1];
 		$status = $_POST["status"];
@@ -60,6 +85,8 @@
 		} else {
 			echo "Status change failed";
 		}
+	}else if ($_POST["action"]=="get_book"){
+		echo json_encode( select_book_by_id_ctrl($_POST["id"]));
 	}else {
 		echo "Unsupported Action";
 	}

@@ -95,6 +95,12 @@ class book_class extends db_connection
         return $this->db_fetch_one($sql);
     }
 
+    function get_book_genre_cls($id){
+        $sql = "SELECT * FROM `book_genres` WHERE `book_id`='$id'";
+        // return $sql;
+        return $this->db_fetch_one($sql);
+    }
+
 
     function select_all_draft_book_cls(){
         $sql = "SELECT * FROM `books` WHERE `book_status`='draft'";
@@ -143,9 +149,11 @@ class book_class extends db_connection
      * This function update the book details in the database
      * @return bool
      */
-    function update_book_cls($book_id,$title,$desc,$p_date,$date_added,$p_id){
-        $sql = "UPDATE `books` SET
-        `book_id`='$book_id',`title`='$title',`description`='$desc',`publish_date`='$p_date',`date_added`='$date_added',`publisher_id`='$p_id'";
+    function update_book_cls($id, $title,$description, $publish_date,$status,$price, $publisher){
+
+        $sql = "UPDATE `books` SET `title`= '$title', `description`='$description', `publish_date`='$publish_date',
+        `book_status`='$status', `publisher_id`='$publisher',`price`='$price' WHERE `book_id`='$id'";
+        // return $sql;
         return $this->db_query($sql);
     }
 

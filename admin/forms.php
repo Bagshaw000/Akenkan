@@ -12,7 +12,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     //Enforcing admin only success
     if (!(is_user_signed_in() && is_session_user_admin())){
-        header("Location: login.php");
+        header("Location: ../web/login.php");
     }
 ?>
 <!DOCTYPE HTML>

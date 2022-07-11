@@ -66,6 +66,11 @@ function count_all_books_ctrl(){
     return count(select_all_book_ctr() ?? []);
 }
 
+function get_book_genre_ctrl($id){
+    $book = new book_class();
+    return $book->get_book_genre_cls($id);
+}
+
 function get_all_publishers_ctrl(){
     $book = new book_class();
     return $book->get_all_publishers_cls();
@@ -141,14 +146,9 @@ function get_author_name_by_id_ctrl($id){
  * @return error
  */
 
-function update_book_ctr($book_id,$title,$desc,$p_date,$date_added,$b_perm,$p_id){
-    try{
-            $data = new book_class();
-            return  $data->update_book_cls(cleanText($book_id),cleanText($title),cleanText($desc),cleanText($p_date),cleanText($date_added),cleanText($b_perm),cleanText($p_id));}
-    catch(exception $e){
-            return $e;
-
-        }
+function update_book_ctrl($id, $title,$description, $publish_date,$status,$price, $publisher){
+        $data = new book_class();
+        return  $data->update_book_cls($id, $title,$description, $publish_date,$status,$price, $publisher);
 }
 
 function update_book_status_ctrl($id, $status){
@@ -178,5 +178,3 @@ function publish_book_ctrl($id){
     $book = new book_class();
     return $book->update_book_status_cls($id,"published");
 }
-
-?>

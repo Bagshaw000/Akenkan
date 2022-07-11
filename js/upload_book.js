@@ -1,5 +1,6 @@
 
 
+
 function onBookUpload(){
 	event.preventDefault();
 
@@ -33,6 +34,37 @@ function onBookUpload(){
 		}
 		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhttp.send("action=add_book&title="+ name.value +"&description="+description.value +"&publish_date="+publish_date.value +"&status="+status.value +"&author="+author.value +"&genre="+genre.value +"&publisher="+publisher.value+"&id="+id.value +"&price="+price.value  );
+
+}
+
+function onBookEdit(){
+	event.preventDefault();
+
+	var id = document.getElementById("id");
+	var name = document.getElementById("title");
+	var description = document.getElementById("description");
+	var publish_date = document.getElementById("publish_date");
+	var status = document.getElementById("status");
+	var author = document.getElementById("author");
+	var genre = document.getElementById("genre");
+	var publisher = document.getElementById("publisher");
+	var price = document.getElementById("price");
+
+	const xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "/akenkan/actions/book_processor.php");
+		xhttp.onreadystatechange = function (){
+			if (xhttp.readyState == XMLHttpRequest.DONE){
+				if (xhttp.response == "Updated Book: "+name.value){
+					alert(xhttp.response);
+					console.log(xhttp.response);
+					window.location = "grid.php";
+				}else {
+					alert(xhttp.response);
+				}
+			}
+		}
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send("action=update_book&title="+ name.value +"&description="+description.value +"&publish_date="+publish_date.value +"&status="+status.value +"&author="+author.value +"&genre="+genre.value +"&publisher="+publisher.value+"&id="+id.value +"&price="+price.value  );
 
 }
 
