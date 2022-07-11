@@ -9,6 +9,7 @@ require_once("../settings/core.php");
 require_once("../controllers/cart_controllers.php");
 require_once("../controllers/user_controller.php");
 require_once("../controllers/book_controller.php");
+require_once("../controllers/review_controller.php");
 if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 	header("Location: index.php");
 } else {
@@ -18,6 +19,7 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 	$price = $book["price"];
 	$description = $book["description"];
 	$id = $book["book_id"];
+	$user = get_session_user_id();
 }
 ?>
 <!DOCTYPE html>
@@ -236,10 +238,41 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 			</script>
 			<script type="text/javascript" src="js/jquery.flexisel.js"></script>
 
-			<div class="toogle">
+			<!-- <div class="toogle">
 				<h3 class="m_3">Product Details</h3>
-				<p class="m_text"> <?php echo $description; ?></p>
-			</div>
+				<p class="m_text"> <?php /* echo $description; */ ?></p>
+			</div> -->
+			<div class="toogle">
+
+			<div class="contact-form">
+					 <h4 class="m_3">Review this book</h5>
+							<form method="post" action="../actions/review_processor.php">
+								<label for="">Rate from 1 to 5: </label>
+								<input type="hidden" name="book_id" <?php echo "value='$id'" ?>>
+								<input type="hidden" name="user_id" <?php echo "value='$user'" ?>>
+								<input type="number" class="textbox" max="5" value="5" name="stars">
+								<textarea value="Review" placeholder="Type your review here..." name="comment"></textarea>
+								<input type="submit" value="Submit">
+								<div class="clearfix"> </div>
+							</form>
+					 </div>
+				     	<h3 class="m_3">Reviews</h3>
+						<?php
+							$reviews = get_reviews_by_book_id_ctrl($id);
+							if (empty($reviews)){
+								echo "No reviews";
+							} else {
+								foreach($reviews as $item){
+									$comment=$item["review_comment"];
+									$username = get_user_name_by_id_ctrl($item["user_id"]);
+									echo "<p class='m_text'><b>$username</b><br>$comment </p>";
+								}
+							}
+						?>
+
+				     </div>
+
+
 		</div>
 
 		<!---->
@@ -303,26 +336,9 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 		<!---->
 		<div class="footer">
 			<div class="footer-top">
-				<!-- <div class="container"> -->
-				<!-- <div class="latter"> -->
-				<!-- <h6>NEWS-LETTER</h6> -->
-				<!-- <div class="sub-left-right">
-						<form>
-							<input type="text" value="Enter email here"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter email here';}" />
-							<input type="submit" value="SUBSCRIBE" />
-						</form> -->
-				<!-- </div> -->
+
 				<div class="clearfix"> </div>
-				<!-- </div> -->
-				<!-- <div class="latter-right">
-					<p>FOLLOW US</p>
-					<ul class="face-in-to">
-						<li><a href="#"><span> </span></a></li>
-						<li><a href="#"><span class="facebook-in"> </span></a></li>
-						<div class="clearfix"> </div>
-					</ul>
-					<div class="clearfix"> </div>
-				</div> -->
+
 			</div>
 			<div class="footer-bottom">
 				<div class="container">

@@ -18,7 +18,7 @@ class cart_class extends db_connection{
 	//--SELECT--//
 	function count_cart_by_customer_cls($customer_id){
 		$sql = "SELECT * FROM `cart` WHERE `customer_id`='$customer_id' ";
-		return $this->db_count($sql);
+		return count($this->db_fetch_all($sql) ?? []);
 	}
 
 	function get_order_items_cls($order_id){
@@ -33,7 +33,7 @@ class cart_class extends db_connection{
 
 	function count_cart_by_ip_cls($customer_id){
 		$sql = "SELECT * FROM `cart` WHERE `p_add`='$customer_id' ";
-		return $this->db_count($sql);
+		return count($this->db_fetch_all($sql) ?? []);
 	}
 	function get_cart_by_customer_cls($customer_id){
 		$sql = "SELECT * FROM `cart` WHERE `user_id`='$customer_id' ";

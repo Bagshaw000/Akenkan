@@ -29,6 +29,7 @@ class order_class extends db_connection{
 
 	//--SELECT--//
 
+
 	function get_all_orders_cls(){
 		$sql = "SELECT * FROM `orders`";
 		return $this->db_fetch_all($sql);
@@ -47,12 +48,12 @@ class order_class extends db_connection{
 
 	function count_orders_by_status_cls($status){
 		$sql = "SELECT * FROM `orders` WHERE `order_status`='$status'";
-		return $this->db_count($sql);
+		return count($this->db_fetch_all($sql) ?? []);
 	}
 
 	function count_all_orders_cls(){
 		$sql = "SELECT * FROM `orders`";
-		return $this->db_count($sql);
+		return count($this->db_fetch_all($sql) ?? []);
 	}
 
 	function get_last_order_cls(){

@@ -7,6 +7,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <?php
 //Getting neccessary files
 require_once("../controllers/user_controller.php");
+require_once("../controllers/order_controller.php");
+require_once("../controllers/book_controller.php");
+require_once("../controllers/claim_controller.php");
 require_once("../settings/core.php");
 
 //Enforcing admin only success
@@ -314,7 +317,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <div class="r3_counter_box">
                             <i class="pull-left fa fa-users dollar2 icon-rounded"></i>
                             <div class="stats">
-                                <h5><strong>1450</strong></h5>
+                                <h5><strong><?php
+                                    echo get_user_count_ctrl();
+                                ?></strong></h5>
                                 <span>Total Users</span>
                             </div>
                         </div>
@@ -323,7 +328,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <div class="r3_counter_box">
                             <i class="pull-left fa fa-laptop user1 icon-rounded"></i>
                             <div class="stats">
-                                <h5><strong>$1019</strong></h5>
+                                <h5><strong><?php echo count_orders_by_status_ctrl("processing") ?></strong></h5>
                                 <span>Processing</span>
                             </div>
                         </div>
@@ -332,8 +337,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <div class="r3_counter_box">
                             <i class="pull-left fa fa-money user2 icon-rounded"></i>
                             <div class="stats">
-                                <h5><strong>$1012</strong></h5>
-                                <span>Shipping</span>
+                            <h5><strong><?php echo count_orders_by_status_ctrl("in shipping") ?></strong></h5>
+                                <span>In Shipping</span>
                             </div>
                         </div>
                     </div>
@@ -341,7 +346,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <div class="r3_counter_box">
                             <i class="pull-left fa fa-pie-chart dollar1 icon-rounded"></i>
                             <div class="stats">
-                                <h5><strong>$450</strong></h5>
+                            <h5><strong><?php echo count_orders_by_status_ctrl("delivered") ?></strong></h5>
                                 <span>Delivered</span>
                             </div>
                         </div>
@@ -354,31 +359,64 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="col-md-3 stat">
                         <div class="content-top-1">
                             <div class="col-md-6 top-content">
-                                <h5>Sales</h5>
-                                <label>1283+</label>
+                                <h5>Complete Sales</h5>
+                                <?php
+                                $delivered = count_orders_by_status_ctrl("delivered");
+                                $total_orders = count_all_orders_ctrl();
+                                if ($total_orders ==0){
+                                    $percentage1 = 0;
+                                } else {
+
+                                    $percentage1= ($delivered/$total_orders) * 100;
+                                }
+                                echo "<label>$delivered</label>";
+
+                                 ?>
                             </div>
                             <div class="col-md-6 top-content1">
-                                <div id="demo-pie-1" class="pie-title-center" data-percent="45"> <span class="pie-value"></span> </div>
+                                <div id="demo-pie-1" class="pie-title-center" <?php echo "data-percent='$percentage1'" ?>> <span class="pie-value"></span> </div>
                             </div>
                             <div class="clearfix"> </div>
                         </div>
                         <div class="content-top-1">
                             <div class="col-md-6 top-content">
-                                <h5>Reviews</h5>
-                                <label>2262+</label>
+                                <h5>Published Listings</h5>
+                                <?php
+                                $delivered = count_books_by_status_ctrl("published");
+                                $total_orders = count_all_books_ctrl();
+                                if ($total_orders ==0){
+                                    $percentage1 = 0;
+                                } else {
+
+                                    $percentage1= ($delivered / $total_orders) * 100;
+                                }
+                                echo "<label>$delivered</label>";
+
+                                 ?>
                             </div>
                             <div class="col-md-6 top-content1">
-                                <div id="demo-pie-2" class="pie-title-center" data-percent="75"> <span class="pie-value"></span> </div>
+                                <div id="demo-pie-2" class="pie-title-center" <?php echo "data-percent=$percentage1" ?>> <span class="pie-value"></span> </div>
                             </div>
                             <div class="clearfix"> </div>
                         </div>
                         <div class="content-top-1">
                             <div class="col-md-6 top-content">
-                                <h5>Orders</h5>
-                                <label>12589+</label>
+                                <h5>Resolved Claims</h5>
+                                <?php
+                                $delivered = count_claims_by_status_ctrl("closed");
+                                $total_orders = count_all_claims_ctrl();
+                                if ($total_orders ==0){
+                                    $percentage1 = 0;
+                                } else {
+
+                                    $percentage1= $delivered/$total_orders;
+                                }
+                                echo "<label>$delivered</label>";
+
+                                 ?>
                             </div>
                             <div class="col-md-6 top-content1">
-                                <div id="demo-pie-3" class="pie-title-center" data-percent="90"> <span class="pie-value"></span> </div>
+                                <div id="demo-pie-3" class="pie-title-center" <?php echo "data-percent=$percentage1" ?>> <span class="pie-value"></span> </div>
                             </div>
                             <div class="clearfix"> </div>
                         </div>

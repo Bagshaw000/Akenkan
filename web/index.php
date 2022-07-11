@@ -66,18 +66,17 @@ require_once("../controllers/book_controller.php");
 					<!-- SEARCH BAR-->
 					<form class="search">
 						<?php
-							if (isset($_GET["search"])){
-								$q = $_GET["search"];
-								echo "<input type='text' name='search' value ='q' onfocus='this.value = '';' onblur='if (this.value == '') {this.value = '';}' placeholder='Search by title and author...'>";
-
-							}else {
-								echo "<input type='text' name='search' onfocus='this.value = '';' onblur='if (this.value == '') {this.value = '';}' placeholder='Search by title and author...'>";
-							}
+						if (isset($_GET["search"])) {
+							$q = $_GET["search"];
+							echo "<input type='text' name='search' value ='q' onfocus='this.value = '';' onblur='if (this.value == '') {this.value = '';}' placeholder='Search by title and author...'>";
+						} else {
+							echo "<input type='text' name='search' onfocus='this.value = '';' onblur='if (this.value == '') {this.value = '';}' placeholder='Search by title and author...'>";
+						}
 						?>
 
 						<input type="submit" value="SEARCH">
 
-	</form>
+					</form>
 					<div class="clearfix"> </div>
 				</div>
 

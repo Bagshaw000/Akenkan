@@ -1,7 +1,6 @@
 <?php
 
-require_once("../classes/claim._classphp");
-
+	require_once("../classes/claim_class.php");
 
 	function make_a_claim_ctrl($user_id,$message){
 		$claim = new claim_class();
@@ -21,6 +20,10 @@ require_once("../classes/claim._classphp");
 		return $claim->get_claims_by_status_cls($status);
 	}
 
+	function count_claims_by_status_ctrl($status){
+		return count( get_claims_by_status_ctrl($status)?? []);
+	}
+
 
 	//Gets the claim with the matching claim id
 	function get_claim_by_id_ctrl($id){
@@ -32,6 +35,10 @@ require_once("../classes/claim._classphp");
 	function get_all_claims_ctrl(){
 		$claim = new claim_class();
 		return $claim->get_all_claims_cls();
+	}
+
+	function count_all_claims_ctrl(){
+		return count(get_all_claims_ctrl() ?? []);
 	}
 
 	//--UPDATE--//
@@ -46,7 +53,7 @@ require_once("../classes/claim._classphp");
 	//Marks a claim has adddressed(closed)
 	function close_claim_ctrl($id){
 		$claim = new claim_class();
-		return $claim->change_claim_status_cls($id,"opened");
+		return $claim->change_claim_status_cls($id,"closed");
 	}
 
 ?>

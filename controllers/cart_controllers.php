@@ -27,7 +27,7 @@ require_once("../classes/cart_class.php");
 
 	function count_cart_by_customer_ctrl($customer_id){
 		$cart = new cart_class();
-		return $cart->count_cart_by_customer_cls($customer_id);
+		return count($cart->get_cart_by_customer_cls($customer_id) ?? []);
 	}
 
 
@@ -59,7 +59,7 @@ require_once("../classes/cart_class.php");
 
 	function count_cart_by_ip_ctrl($customer_id){
 		$cart = new cart_class();
-		return $cart->count_cart_by_ip_cls($customer_id);
+		return count($cart->get_cart_by_ip_cls($customer_id) ?? []);
 	}
 
 	function get_every_item_price_ctrl($user_id){
