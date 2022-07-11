@@ -29,9 +29,10 @@
 		}
 
 		function get_all_reviews_cls(){
-			$sql = "SELECT * FRMOOM `reviews`";
+			$sql = "SELECT * FROM `reviews`";
 			return $this->db_fetch_all($sql);
 		}
+
 
 		//--UPDATE--//
 

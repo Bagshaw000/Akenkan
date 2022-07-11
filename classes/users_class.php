@@ -37,7 +37,7 @@ class user_class extends db_connection
 
     function get_user_count_cls(){
         $sql = "SELECT * FROM `users`";
-        return $this->db_count($sql);
+        return count($this->db_fetch_all($sql) ?? []);
     }
 
     function sign_in_user_cls($email, $password){

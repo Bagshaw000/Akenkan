@@ -270,8 +270,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								</thead>
 								<tbody>
 									<?php
-
-
 									$reviews = get_all_reviews_ctrl();
 									if ($reviews){
 									foreach ($reviews as $item) {
@@ -290,7 +288,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 										echo "</tr>";
 									}
 									} else {
-										echo "<p>No Reviews yet</p>";
+										echo "<tr><td></td><td></td><td>No Reviews yet</td><td></td></tr>";
 									}
 									?>
 

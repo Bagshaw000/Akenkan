@@ -62,6 +62,10 @@ function select_all_book_ctr(){
     }
 }
 
+function count_all_books_ctrl(){
+    return count(select_all_book_ctr() ?? []);
+}
+
 function get_all_publishers_ctrl(){
     $book = new book_class();
     return $book->get_all_publishers_cls();
@@ -69,6 +73,10 @@ function get_all_publishers_ctrl(){
 
 
 
+function count_books_by_status_ctrl($status){
+    $user = new book_class();
+    return $user->count_books_by_status_cls($status);
+}
 function get_all_genres_ctrl(){
     $book = new book_class();
     return $book->get_all_genres_cls();

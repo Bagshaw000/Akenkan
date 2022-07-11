@@ -25,6 +25,11 @@ class book_class extends db_connection
          return $this->db_query($sql);
     }
 
+    function count_books_by_status_cls($status){
+        $sql = "SELECT * FROM `books` WHERE `book_status`='$status'";
+        return count($this->db_fetch_all($sql) ?? []);
+    }
+
 
     function join_book_genre_cls($book_id, $genre){
         $sql = "INSERT INTO `book_genres` (`book_id`,`genre_name`) VALUE ('$book_id','$genre')";
