@@ -41,6 +41,7 @@ CREATE TABLE genres(
 );
 
 
+
 /*Relates to the books being sold on Akenkan*/
 CREATE TABLE books(
 	book_id VARCHAR(120), /*Not int because it corresponds to the books isbn number (which is unique)*/
