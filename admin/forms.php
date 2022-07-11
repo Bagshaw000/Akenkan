@@ -6,12 +6,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <?php
 //Getting neccessary files
+    require_once("../controllers/order_controller.php");
     require_once("../controllers/user_controller.php");
     require_once("../settings/core.php");
 
     //Enforcing admin only success
     if (!(is_user_signed_in() && is_session_user_admin())){
-        header("Location: login.php");
+        header("Location: ../web/login.php");
     }
 ?>
 <!DOCTYPE HTML>
@@ -89,7 +90,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <li><a href="media.php"><i class="fa fa-angle-right"></i> Add book</a></li>
                 </ul>
               </li>
-           
+
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-edit"></i> <span>Purchase</span>
@@ -97,10 +98,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </a>
                 <ul class="treeview-menu">
                   <li><a href="forms.php"><i class="fa fa-angle-right"></i> Orders</a></li>
-                  <li><a href="validation.php"><i class="fa fa-angle-right"></i> Transactions</a></li>
                 </ul>
               </li>
-            
+
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-envelope"></i> <span>Reviews</span>
@@ -233,6 +233,59 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="form-body">
 
+						<table class="table">
+								<thead>
+									<tr>
+										<th scope="col">User Name</th>
+										<th scope="col">Order ID</th>
+										<th scope="col">Transaction ID</th>
+										<th scope="col">Address </th>
+										<th scope="col">Amount</th>
+										<th scope="col">Status </th>
+									</tr>
+								</thead>
+								<tbody>
+									<script src="../js/"></script>
+									<?php
+									$orders = get_all_orders_ctrl();
+									if ($orders) {
+										foreach ($orders as $item) {
+
+											$user = get_user_name_by_id_ctrl($item["user_id"]);
+											$order_id = $item["order_id"];
+											$transaction = $item["transaction_id"];
+											$address = $item["billing_address"];
+											$amount = $item["amount"];
+											$status = $item["order_status"];
+
+											echo "<tr>";
+											echo "<td>$user</td>\n";
+											echo "<td>$order_id</td>\n";
+											echo "<td>$transaction</td>\n";
+											echo "<td>$address</td>\n";
+											echo "<td> GHS $amount</td>\n";
+
+											echo "<td>\n
+												<select class='form-select' aria-label='Default select example' id='status_$id' onchange='return onStatusChange(this.id,this.value)'>\n";
+													$states = array('processing', 'in shipping', 'delivered');
+													foreach ($states as $current) {
+														if ($current == $status) {
+															echo "<option value='$current' selected>$current</option>\n";
+														} else {
+															echo "<option value='$current'>$current</option>\n";
+														}
+													}
+											echo "</select></td>";
+											echo "</tr>";
+										}
+									} else {
+										echo "<tr><td></td><td></td><td>No orders yet</td><td></td></tr>";
+									}
+									?>
+
+
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>

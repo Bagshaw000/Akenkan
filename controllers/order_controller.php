@@ -3,9 +3,9 @@
 
 
 	//--INSERT--//
-	function create_order_ctrl($user_id, $order_id, $trans_id, $billing_address, $amount, $status){
+	function create_order_ctrl($user_id, $trans_id, $billing_address, $amount, $status){
 		$order = new order_class();
-		return $order->create_order_cls($user_id, $order_id, $trans_id, $billing_address, $amount, $status);
+		return $order->create_order_cls($user_id, $trans_id, $billing_address, $amount, $status);
 	}
 
 
@@ -35,6 +35,16 @@
 	function count_all_orders_ctrl(){
 		$order = new order_class();
 		return $order->count_all_orders_cls();
+	}
+	
+	function create_order_items_ctrl($order_id,$book_id,$quantity){
+		$cart = new order_class();
+		return $cart->create_order_items_cls($order_id,$book_id,$quantity);
+	}
+
+	function get_last_order_ctrl(){
+		$order = new order_class();
+		return $order->get_last_order_cls();
 	}
 
 

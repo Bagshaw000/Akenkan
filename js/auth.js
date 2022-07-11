@@ -7,7 +7,7 @@ function onsignout(){
 			if (xhttp.readyState == XMLHttpRequest.DONE){
 				if (xhttp.response == "Successfully signed you out"){
 					alert(xhttp.response);
-					window.location = "index.php";
+					window.location = "/akenkan/web/index.php";
 				}else {
 					alert(xhttp.response);
 				}

@@ -12,7 +12,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     //Enforcing admin only success
     if (!(is_user_signed_in() && is_session_user_admin())){
-        header("Location: login.php");
+        header("Location: ../web/login.php");
     }
 ?>
 <!DOCTYPE HTML>
@@ -88,7 +88,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <li><a href="media.php"><i class="fa fa-angle-right"></i> Add book</a></li>
                 </ul>
               </li>
-                   						
+
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-edit"></i> <span>Purchase</span>
@@ -96,10 +96,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </a>
                 <ul class="treeview-menu">
                   <li><a href="forms.php"><i class="fa fa-angle-right"></i> Orders</a></li>
-                  <li><a href="validation.php"><i class="fa fa-angle-right"></i> Transactions</a></li>
                 </ul>
               </li>
-             
+
               <li class="treeview">
                 <a href="#">
                 <i class="fa fa-envelope"></i> <span>Feedback</span>
@@ -109,8 +108,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                   <li><a href="compose.php"><i class="fa fa-angle-right"></i> Issues </a></li>
                 </ul>
               </li>
-             
-             
+
+
             </ul>
           </div>
           <!-- /.navbar-collapse -->
@@ -246,6 +245,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
       <th scope="col">Author</th>
       <th scope="col">item Price</th>
       <th scope="col">Status</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -281,6 +281,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 								echo "<option value='$current'>$current</option>\n";
 							}
 						}
+				echo "<td><a href='media.php?id=$id' class='btn'>Edit</td>";
 					echo "</select></td>";
 				echo "</tr>";
 		}

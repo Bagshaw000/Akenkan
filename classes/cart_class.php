@@ -18,7 +18,7 @@ class cart_class extends db_connection{
 	//--SELECT--//
 	function count_cart_by_customer_cls($customer_id){
 		$sql = "SELECT * FROM `cart` WHERE `customer_id`='$customer_id' ";
-		return $this->db_count($sql);
+		return count($this->db_fetch_all($sql) ?? []);
 	}
 
 	function get_order_items_cls($order_id){
@@ -33,10 +33,10 @@ class cart_class extends db_connection{
 
 	function count_cart_by_ip_cls($customer_id){
 		$sql = "SELECT * FROM `cart` WHERE `p_add`='$customer_id' ";
-		return $this->db_count($sql);
+		return count($this->db_fetch_all($sql) ?? []);
 	}
 	function get_cart_by_customer_cls($customer_id){
-		$sql = "SELECT * FROM `cart` WHERE `customer_id`='$customer_id' ";
+		$sql = "SELECT * FROM `cart` WHERE `user_id`='$customer_id' ";
 		return $this->db_fetch_all($sql);
 	}
 
@@ -46,13 +46,13 @@ class cart_class extends db_connection{
 	}
 
 	function get_cart_item_by_customer_cls($product_id,$user_id){
-		$sql = "SELECT * FROM `cart` WHERE `product_id`='$product_id' and `customer_id`= '$user_id'";
+		$sql = "SELECT * FROM `cart` WHERE `book_id`='$product_id' and `user_id`= '$user_id'";
 
 		return $this->db_fetch_one($sql);
 	}
 
 	function get_cart_item_by_ip_cls($product_id,$ip_address){
-		$sql = "SELECT * FROM `cart` WHERE `product_id`='$product_id' and `ip_address`= '$ip_address' and `customer_id` = null";
+		$sql = "SELECT * FROM `cart` WHERE `book_id`='$product_id' and `ip_address`= '$ip_address' and `user_id` = null";
 
 		return $this->db_fetch_one($sql);
 	}
@@ -71,7 +71,7 @@ class cart_class extends db_connection{
 	}
 
 	function get_user_cart_item_cls($user_id, $item_id){
-		$sql = "SELECT * FROM `cart` WHERE `customer_id`='$user_id' AND `product_id`='$item_id'";
+		$sql = "SELECT * FROM `cart` WHERE `user_id`='$user_id' AND `product_id`='$item_id'";
 		return $this->db_fetch_one($sql);
 	}
 
@@ -81,18 +81,31 @@ class cart_class extends db_connection{
 		return $this->db_query($sql);
 	}
 
+	function get_every_item_price_cls($user_id){
+		$sql = "SELECT books.price * cart.quantity,cart.quantity, books.description, books.price,books.image_location ,books.book_id FROM cart 
+		INNER JOIN books on cart.book_id = books.book_id WHERE cart.user_id= '$user_id'  ";
+		return $this->db_fetch_all($sql);
+
+	}
+
+	function get_cart_total_price_cls($user_id){
+		$sql = "SELECT SUM(books.price * cart.quantity) FROM `cart` INNER JOIN `books` on cart.book_id = books.book_id WHERE cart.user_id ='$user_id'";
+
+		return $this->db_fetch_one($sql);
+	}
+
 
 	//--UPDATE--//
 
 	function add_to_cart_signed_in_ctrl($product_id, $customer_id, $quantity, $customer_ip){
-		$sql = "INSERT INTO  `cart` (`product_id`, `ip_address`, `quantity`, `customer_id`)
+		$sql = "INSERT INTO  `cart` (`book_id`, `ip_address`, `quantity`, `user_id`)
 		VALUES ('$product_id', '$customer_ip', '$quantity', '$customer_id')";
 
 		return $this->db_query($sql);
 	}
 
 	function add_to_cart_signed_out_ctrl($product_id, $quantity, $customer_ip){
-		$sql = "INSERT INTO  `cart` (`product_id`, `ip_address`, `quantity`)
+		$sql = "INSERT INTO  `cart` (`user_id`, `ip_address`, `quantity`)
 		VALUES ('$product_id', '$customer_ip', '$quantity')";
 
 		return $this->db_query($sql);
@@ -100,7 +113,7 @@ class cart_class extends db_connection{
 
 	function update_cart_cls($product_id, $customer_id, $quantity, $customer_ip){
 		$sql = "UPDATE `cart` SET  `quantity`='$quantity'
-		WHERE `product_id`='$product_id' AND `customer_id`='$customer_id' AND `ip_address` = '$customer_ip'";
+		WHERE `book_id`='$product_id' AND `user_id`='$customer_id' AND `ip_address` = '$customer_ip'";
 
 		return $this->db_query($sql);
 	}
@@ -112,12 +125,12 @@ class cart_class extends db_connection{
 
 
 	function remove_item_by_customer_cls($product_id,$user_id){
-		$sql = "DELETE FROM `cart` WHERE `product_id`='$product_id' and `customer_id`= '$user_id'";
+		$sql = "DELETE FROM `cart` WHERE `book_id`='$product_id' and `user_id`= '$user_id'";
 		return $this->db_query($sql);
 	}
 
 	function remove_item_by_ip_cls($product_id,$ip_address){
-		$sql = "DELETE FROM `cart` WHERE `product_id`='$product_id' and `ip_address`= '$ip_address'  and `customer_id` = null";
+		$sql = "DELETE FROM `cart` WHERE `book_id`='$product_id' and `ip_address`= '$ip_address'  and `user_id` = null";
 		return $this->db_query($sql);
 	}
 

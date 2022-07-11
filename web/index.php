@@ -66,18 +66,17 @@ require_once("../controllers/book_controller.php");
 					<!-- SEARCH BAR-->
 					<form class="search">
 						<?php
-							if (isset($_GET["search"])){
-								$q = $_GET["search"];
-								echo "<input type='text' name='search' value ='q' onfocus='this.value = '';' onblur='if (this.value == '') {this.value = '';}' placeholder='Search by title and author...'>";
-
-							}else {
-								echo "<input type='text' name='search' onfocus='this.value = '';' onblur='if (this.value == '') {this.value = '';}' placeholder='Search by title and author...'>";
-							}
+						if (isset($_GET["search"])) {
+							$q = $_GET["search"];
+							echo "<input type='text' name='search' value ='q' onfocus='this.value = '';' onblur='if (this.value == '') {this.value = '';}' placeholder='Search by title and author...'>";
+						} else {
+							echo "<input type='text' name='search' onfocus='this.value = '';' onblur='if (this.value == '') {this.value = '';}' placeholder='Search by title and author...'>";
+						}
 						?>
 
 						<input type="submit" value="SEARCH">
 
-	</form>
+					</form>
 					<div class="clearfix"> </div>
 				</div>
 
@@ -99,9 +98,9 @@ require_once("../controllers/book_controller.php");
 
 					// echo get_cart_by_ip_ctrl(get_user_ip());
 					if (is_user_signed_in()) {
-						$cart_count = get_cart_by_customer_ctrl(get_session_user_id());
+						$cart_count = count_cart_by_customer_ctrl(get_session_user_id());
 					} else {
-						$cart_count = get_cart_by_ip_ctrl(get_user_ip());
+						$cart_count = 0;
 					}
 					echo "<div class='cart'><a href='cart.php'><span> </span>CART ($cart_count)</a></div>";
 
@@ -271,7 +270,7 @@ require_once("../controllers/book_controller.php");
 								<label for='rating-input-1-1' class='rating-star'> </label>
 							</span>
 						</div>
-						<a class='now-get get-cart' href='#'>ADD TO CART</a>
+
 						<div class='clearfix'> </div>
 					</div>
 				</div>
@@ -300,7 +299,7 @@ require_once("../controllers/book_controller.php");
 									<label for='rating-input-1-1' class='rating-star'> </label>
 								</span>
 							</div>
-							<a class='now-get get-cart' href='#'>ADD TO CART</a>
+
 							<div class='clearfix'> </div>
 						</div>
 					</div>
@@ -328,7 +327,7 @@ require_once("../controllers/book_controller.php");
 								<label for='rating-input-1-1' class='rating-star'> </label>
 							</span>
 						</div>
-						<a class='now-get get-cart' href='#'>ADD TO CART</a>
+
 						<div class='clearfix'> </div>
 					</div>
 				</div>

@@ -9,6 +9,7 @@ require_once("../settings/core.php");
 require_once("../controllers/cart_controllers.php");
 require_once("../controllers/user_controller.php");
 require_once("../controllers/book_controller.php");
+require_once("../controllers/review_controller.php");
 if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 	header("Location: index.php");
 } else {
@@ -18,6 +19,7 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 	$price = $book["price"];
 	$description = $book["description"];
 	$id = $book["book_id"];
+	$user = get_session_user_id();
 }
 ?>
 <!DOCTYPE html>
@@ -30,6 +32,7 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<link rel="stylesheet" href="css/etalage.css" type="text/css" media="all" />
 	<!--//theme-style-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<script type="application/x-javascript">
 		addEventListener("load", function() {
@@ -107,6 +110,7 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 				<div class="header-bottom-right">
 
 					<script src="../js/auth.js"></script>
+
 					<?php
 					echo "<ul class='login'>";
 					if (is_user_signed_in()) { //show log out and username if signed in
@@ -122,9 +126,9 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 
 					// echo get_cart_by_ip_ctrl(get_user_ip());
 					if (is_user_signed_in()) {
-						$cart_count = get_cart_by_customer_ctrl(get_session_user_id());
+						$cart_count = count_cart_by_customer_ctrl(get_session_user_id());
 					} else {
-						$cart_count = get_cart_by_ip_ctrl(get_user_ip());
+						$cart_count =   0;
 					}
 					echo "<div class='cart'><a href='cart.php'><span> </span>CART ($cart_count)</a></div>";
 
@@ -171,9 +175,10 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 					<h3><?php echo $title; ?></h3>
 					<div class="cart-b">
 						<div class="left-n ">GHS <?php echo $price; ?></div>
-						<a class="now-get get-cart-in" href="#">ADD TO CART</a>
+						<a class="now-get get-cart-in"  onclick="addCart('<?php  echo (get_session_user_id()) ?>','<?php echo (get_user_ip())?>', '<?php echo ($id) ?>','<?php echo 1 ?> ')">ADD TO CART</a>
 						<div class="clearfix"></div>
 					</div>
+					<script src="../js/cart.js"></script>
 					<!-- <h6>100 items in stock</h6> -->
 					<p>BOOK DESCRIPTION <br>
 						<?php echo $description; ?></p>
@@ -238,23 +243,35 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 				<p class="m_text"> <?php /* echo $description; */ ?></p>
 			</div> -->
 			<div class="toogle">
-				     	<h3 class="m_3">Reviews</h3>
-				     		<p class="m_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt 
-							ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper 
-							suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate 
-							velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis </p>
-				     </div>	
 
-					 <div class="contact-form">
+			<div class="contact-form">
 					 <h4 class="m_3">Review this book</h5>
-							<form method="post" action="contact-post.php">
+							<form method="post" action="../actions/review_processor.php">
 								<label for="">Rate from 1 to 5: </label>
-								<input type="number" class="textbox" value="Rating" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Rating';}">
-								<textarea value="Review" onfocus="this.value= '';" onblur="if (this.value == '') {this.value = 'Review';}">Type your review here...</textarea>
+								<input type="hidden" name="book_id" <?php echo "value='$id'" ?>>
+								<input type="hidden" name="user_id" <?php echo "value='$user'" ?>>
+								<input type="number" class="textbox" max="5" value="5" name="stars">
+								<textarea value="Review" placeholder="Type your review here..." name="comment"></textarea>
 								<input type="submit" value="Submit">
 								<div class="clearfix"> </div>
 							</form>
 					 </div>
+				     	<h3 class="m_3">Reviews</h3>
+						<?php
+							$reviews = get_reviews_by_book_id_ctrl($id);
+							if (empty($reviews)){
+								echo "No reviews";
+							} else {
+								foreach($reviews as $item){
+									$comment=$item["review_comment"];
+									$username = get_user_name_by_id_ctrl($item["user_id"]);
+									echo "<p class='m_text'><b>$username</b><br>$comment </p>";
+								}
+							}
+						?>
+
+				     </div>
+
 
 		</div>
 
@@ -319,26 +336,9 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 		<!---->
 		<div class="footer">
 			<div class="footer-top">
-				<!-- <div class="container"> -->
-				<!-- <div class="latter"> -->
-				<!-- <h6>NEWS-LETTER</h6> -->
-				<!-- <div class="sub-left-right">
-						<form>
-							<input type="text" value="Enter email here"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter email here';}" />
-							<input type="submit" value="SUBSCRIBE" />
-						</form> -->
-				<!-- </div> -->
+
 				<div class="clearfix"> </div>
-				<!-- </div> -->
-				<!-- <div class="latter-right">
-					<p>FOLLOW US</p>
-					<ul class="face-in-to">
-						<li><a href="#"><span> </span></a></li>
-						<li><a href="#"><span class="facebook-in"> </span></a></li>
-						<div class="clearfix"> </div>
-					</ul>
-					<div class="clearfix"> </div>
-				</div> -->
+
 			</div>
 			<div class="footer-bottom">
 				<div class="container">

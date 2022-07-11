@@ -31,7 +31,10 @@ function sign_out_session(){
 
 //Returns the signed in user's id
 function get_session_user_id(){
-	return $_SESSION["user_id"];
+	if (isset($_SESSION["user_id"])){
+		return $_SESSION["user_id"];
+	}
+	return "";
 }
 
 

@@ -19,6 +19,7 @@ require_once("../classes/cart_class.php");
 		return $cart->get_payment_info_cls($order_id);
 	}
 
+
 	function get_cart_by_customer_ctrl($id){
 		$cart = new cart_class();
 		return $cart->get_cart_by_customer_cls($id);
@@ -26,7 +27,7 @@ require_once("../classes/cart_class.php");
 
 	function count_cart_by_customer_ctrl($customer_id){
 		$cart = new cart_class();
-		return $cart->count_cart_by_customer_cls($customer_id);
+		return count($cart->get_cart_by_customer_cls($customer_id) ?? []);
 	}
 
 
@@ -58,9 +59,20 @@ require_once("../classes/cart_class.php");
 
 	function count_cart_by_ip_ctrl($customer_id){
 		$cart = new cart_class();
-		return $cart->count_cart_by_ip_cls($customer_id);
+		return count($cart->get_cart_by_ip_cls($customer_id) ?? []);
 	}
 
+	function get_every_item_price_ctrl($user_id){
+		$cart = new cart_class();
+		
+		return $cart->get_every_item_price_cls($user_id);
+	}
+
+	function get_cart_total_price_ctrl($user_id){
+		$cart = new cart_class();
+	
+		return $cart->get_cart_total_price_cls($user_id);
+	}
 
 
 	//--UPDATE--//
@@ -70,9 +82,9 @@ require_once("../classes/cart_class.php");
 
 		//check if the product is already there
 		$item = $cart->get_cart_item_by_customer_cls($product_id, $customer_id);
-
+		
 		if($item) { // update entry if product is already in cart
-			return $cart->update_cart_cls($item["product_id"], $item["user_id"], intval($item["quantity"])+1,$item["ip_add"]);
+			return $cart->update_cart_cls($item["book_id"], $item["user_id"], intval($item["quantity"])+1,$item["ip_address"]);
 		}else {
 			//new entry if its not already added to cart
 			return $cart->add_to_cart_signed_in_ctrl($product_id, $customer_id, $quantity, $customer_ip);

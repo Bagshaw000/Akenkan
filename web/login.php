@@ -152,93 +152,13 @@ require_once("../controllers/user_controller.php");
 			</div>
 			<div class="clearfix"> </div>
 		</div>
-		<div class="sub-cate">
-			<div class=" top-nav rsidebar span_1_of_left">
-				<h3 class="cate">CATEGORIES</h3>
-				<ul class="menu">
-					<li class="item1"><a href="#">Drama </a>
-
-					</li>
-					<li class="item2"><a href="#">Adventure </a>
-
-					</li>
-					<li class="item3"><a href="#">Fantasy </a>
-
-					</li>
-					<li class="item4"><a href="#">Romance </a>
-
-					</li>
-					<li class="item5"><a href="#">Sci-Fi </a>
-
-					</li>
-					<li class="item6"><a href="#">Comedy </a>
-
-					</li>
-					<!-- <li>
-			<ul class="kid-menu">
-				<li><a href="product.php">Sci-Fi</a></li>
-				<li ><a href="product.php">Comedy</a></li>
-
-			</ul>
-		</li> -->
-
-				</ul>
-			</div>
-			<!--initiate accordion-->
-			<!-- <script type="text/javascript">
-			$(function() {
-			    var menu_ul = $('.menu > li > ul'),
-			           menu_a  = $('.menu > li > a');
-			    menu_ul.hide();
-			    menu_a.click(function(e) {
-			        e.preventDefault();
-			        if(!$(this).hasClass('active')) {
-			            menu_a.removeClass('active');
-			            menu_ul.filter(':visible').slideUp('normal');
-			            $(this).addClass('active').next().stop(true,true).slideDown('normal');
-			        } else {
-			            $(this).removeClass('active');
-			            $(this).next().stop(true,true).slideUp('normal');
-			        }
-			    });
-
-			});
-		</script> -->
-			<!-- <div class=" chain-grid menu-chain">
-	   		     		<a href="single.php"><img class="img-responsive chain" src="images/wat.jpg" alt=" " /></a>
-	   		     		<div class="grid-chain-bottom chain-watch">
-		   		     		<span class="actual dolor-left-grid">300$</span>
-		   		     		<span class="reducedfrom">500$</span>
-		   		     		<h6>Lorem ipsum dolor</h6>
-	   		     		</div>
-	   		     	</div>
-	   		     	 <a class="view-all all-product" href="product.php">VIEW ALL PRODUCTS<span> </span></a>
-			</div> -->
-			<div class="clearfix"> </div>
-		</div>
+		
 		<!---->
 		<div class="footer">
 			<div class="footer-top">
-				<!-- <div class="container"> -->
-				<!-- <div class="latter"> -->
-				<!-- <h6>NEWS-LETTER</h6> -->
-				<!-- <div class="sub-left-right">
-						<form>
-							<input type="text" value="Enter email here"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter email here';}" />
-							<input type="submit" value="SUBSCRIBE" />
-						</form> -->
-				<!-- </div> -->
+
 				<div class="clearfix"> </div>
-				<!-- </div> -->
-				<!-- <div class="latter-right">
-					<p>FOLLOW US</p>
-					<ul class="face-in-to">
-						<li><a href="#"><span> </span></a></li>
-						<li><a href="#"><span class="facebook-in"> </span></a></li>
-						<div class="clearfix"> </div>
-					</ul>
-					<div class="clearfix"> </div>
-				</div> -->
+
 			</div>
 			<div class="footer-bottom">
 				<div class="container">
