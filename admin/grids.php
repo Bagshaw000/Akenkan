@@ -96,7 +96,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 </a>
                 <ul class="treeview-menu">
                   <li><a href="forms.php"><i class="fa fa-angle-right"></i> Orders</a></li>
-                  <li><a href="validation.php"><i class="fa fa-angle-right"></i> Transactions</a></li>
                 </ul>
               </li>
 

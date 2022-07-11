@@ -219,16 +219,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</form> -->
 					<!-- </div> -->
 					<div class="clearfix"> </div>
-				<!-- </div> -->
-				<!-- <div class="latter-right">
-					<p>FOLLOW US</p>
-					<ul class="face-in-to">
-						<li><a href="#"><span> </span></a></li>
-						<li><a href="#"><span class="facebook-in"> </span></a></li>
-						<div class="clearfix"> </div>
-					</ul>
-					<div class="clearfix"> </div>
-				</div> -->
+
 		</div>
 		<div class="footer-bottom">
 			<div class="container">
