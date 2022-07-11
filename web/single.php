@@ -9,6 +9,7 @@ require_once("../settings/core.php");
 require_once("../controllers/cart_controllers.php");
 require_once("../controllers/user_controller.php");
 require_once("../controllers/book_controller.php");
+require_once("../controllers/review_controller.php");
 if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 	header("Location: index.php");
 } else {
@@ -18,6 +19,7 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 	$price = $book["price"];
 	$description = $book["description"];
 	$id = $book["book_id"];
+	$user = get_session_user_id();
 }
 ?>
 <!DOCTYPE html>
@@ -238,23 +240,35 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 				<p class="m_text"> <?php /* echo $description; */ ?></p>
 			</div> -->
 			<div class="toogle">
-				     	<h3 class="m_3">Reviews</h3>
-				     		<p class="m_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt 
-							ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper 
-							suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate 
-							velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis </p>
-				     </div>	
 
-					 <div class="contact-form">
+			<div class="contact-form">
 					 <h4 class="m_3">Review this book</h5>
-							<form method="post" action="contact-post.php">
+							<form method="post" action="../actions/review_processor.php">
 								<label for="">Rate from 1 to 5: </label>
-								<input type="number" class="textbox" value="Rating" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Rating';}">
-								<textarea value="Review" onfocus="this.value= '';" onblur="if (this.value == '') {this.value = 'Review';}">Type your review here...</textarea>
+								<input type="hidden" name="book_id" <?php echo "value='$id'" ?>>
+								<input type="hidden" name="user_id" <?php echo "value='$user'" ?>>
+								<input type="number" class="textbox" max="5" value="5" name="stars">
+								<textarea value="Review" placeholder="Type your review here..." name="comment"></textarea>
 								<input type="submit" value="Submit">
 								<div class="clearfix"> </div>
 							</form>
 					 </div>
+				     	<h3 class="m_3">Reviews</h3>
+						<?php
+							$reviews = get_reviews_by_book_id_ctrl($id);
+							if (empty($reviews)){
+								echo "No reviews";
+							} else {
+								foreach($reviews as $item){
+									$comment=$item["review_comment"];
+									$username = get_user_name_by_id_ctrl($item["user_id"]);
+									echo "<p class='m_text'><b>$username</b><br>$comment </p>";
+								}
+							}
+						?>
+
+				     </div>
+
 
 		</div>
 

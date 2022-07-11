@@ -276,14 +276,14 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 
 										$user = get_user_name_by_id_ctrl($item["user_id"]);
-										$title = select_book_by_id_ctrl($item["book_id"])["book_title"];
+										$title = select_book_by_id_ctrl($item["book_id"])["title"];
 										$stars = $item["num_of_stars"];
 										$comment = $item["review_comment"];
 
 										echo "<tr>";
 										echo "<td>$user</td>\n";
 										echo "<td>$title</td>\n";
-										echo "<td>$review</td>\n";
+										echo "<td>$comment</td>\n";
 										echo "<td>$stars</td>\n";
 										echo "</tr>";
 									}
