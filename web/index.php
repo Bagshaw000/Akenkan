@@ -271,7 +271,7 @@ require_once("../controllers/book_controller.php");
 								<label for='rating-input-1-1' class='rating-star'> </label>
 							</span>
 						</div>
-						<a class='now-get get-cart' href='#'>ADD TO CART</a>
+						
 						<div class='clearfix'> </div>
 					</div>
 				</div>
@@ -300,7 +300,7 @@ require_once("../controllers/book_controller.php");
 									<label for='rating-input-1-1' class='rating-star'> </label>
 								</span>
 							</div>
-							<a class='now-get get-cart' href='#'>ADD TO CART</a>
+							
 							<div class='clearfix'> </div>
 						</div>
 					</div>
@@ -328,7 +328,7 @@ require_once("../controllers/book_controller.php");
 								<label for='rating-input-1-1' class='rating-star'> </label>
 							</span>
 						</div>
-						<a class='now-get get-cart' href='#'>ADD TO CART</a>
+						
 						<div class='clearfix'> </div>
 					</div>
 				</div>

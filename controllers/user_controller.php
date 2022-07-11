@@ -80,5 +80,10 @@ function get_user_name_by_id_ctrl($id){
     return $user->get_user_name_by_id_cls($id)["display_name"];
 }
 
-//--DELETE--//
+function get_user_by_id_ctrl($id){
+    $user = new user_class();
+    return $user->get_user_by_id_cls($id);
+}
+
+//--DELETE;--//
 ?>
