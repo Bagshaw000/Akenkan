@@ -233,10 +233,29 @@ if (!isset($_GET["id"]) || !select_book_by_id_ctrl($_GET["id"])) {
 			</script>
 			<script type="text/javascript" src="js/jquery.flexisel.js"></script>
 
-			<div class="toogle">
+			<!-- <div class="toogle">
 				<h3 class="m_3">Product Details</h3>
-				<p class="m_text"> <?php echo $description; ?></p>
-			</div>
+				<p class="m_text"> <?php /* echo $description; */ ?></p>
+			</div> -->
+			<div class="toogle">
+				     	<h3 class="m_3">Reviews</h3>
+				     		<p class="m_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt 
+							ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper 
+							suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate 
+							velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis </p>
+				     </div>	
+
+					 <div class="contact-form">
+					 <h4 class="m_3">Review this book</h5>
+							<form method="post" action="contact-post.php">
+								<label for="">Rate from 1 to 5: </label>
+								<input type="number" class="textbox" value="Rating" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Rating';}">
+								<textarea value="Review" onfocus="this.value= '';" onblur="if (this.value == '') {this.value = 'Review';}">Type your review here...</textarea>
+								<input type="submit" value="Submit">
+								<div class="clearfix"> </div>
+							</form>
+					 </div>
+
 		</div>
 
 		<!---->
